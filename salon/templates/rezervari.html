@@ -1,0 +1,11 @@
+{% block title %}Rezervari - {{ block.super }} {% endblock title %}
+{% block body %}
+    <h1>Rezervari</h1>
+    <p>Rezervari pentru {{ data_rezervare }}</p>
+    <ul>
+        {% for rezervare in rezervari %}
+            <li>{{ rezervare }}</li>
+        {% endfor %}
+    </ul>
+{% endblock body %}
+
