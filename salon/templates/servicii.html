@@ -1,33 +1,57 @@
-{% block content %}
-<div class="container mt-5">
-    <h2>Serviciile Noastre</h2>
-    <div class="row">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Serviciile Noastre</title>
+    <style>
+        .service-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .service {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .service img {
+            max-width: 100%;
+            height: auto;
+        }
+        .service h2 {
+            margin-top: 0;
+        }
+    
+        .promo {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="service-container">
         {% for serviciu in servicii %}
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                {% if serviciu.imagine %}
-                <img src="{{ serviciu.imagine.url }}" class="card-img-top" alt="{{ serviciu.nume }}">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ serviciu.nume }}</h5>
-                    <p class="card-text">{{ serviciu.descriere|safe }}</p>
-                    <ul class="list-unstyled">
-                        <li>Durata: {{ serviciu.durata }}</li>
-                        <li>Preț: {{ serviciu.pret }} lei</li>
-                        <li>Categorie: {{ serviciu.categorie }}</li>
-                        {% if serviciu.promotion %}
-                        <li>Promoții/Reduceri: {{ serviciu.promotion }}</li>
-                        {% endif %}
-                    </ul>
-                    {% if serviciu.available %}
-                    <a href="#" class="btn btn-primary">Rezervă acum</a>
-                    {% else %}
-                    <button class="btn btn-secondary" disabled>Serviciu indisponibil</button>
-                    {% endif %}
-                </div>
-            </div>
+        <div class="service{% if not serviciu.available %} not-available{% endif %}">
+            {% if serviciu.imagine %}
+            <img src="{{ serviciu.imagine.url }}" alt="Imagine pentru {{ serviciu.nume }}">
+            {% endif %}
+            <h2>{{ serviciu.nume }}</h2>
+            <div>{{ serviciu.descriere|safe }}</div>
+            <p>Durata: {{ serviciu.durata }}</p>
+            <p>Preț: {{ serviciu.pret }} lei</p>
+            <p>Categorie: {{ serviciu.categorie }}</p>
+            {% if serviciu.promotion %}
+            <p class="promo">Promoții/Reduceri: {{ serviciu.promotion }}</p>
+            {% endif %}
+            <p>Disponibil: {{ serviciu.available|yesno:"Da,Nu" }}</p>
+            
+        
         </div>
+        {% empty %}
+        <p>Nu există servicii disponibile pentru afișare.</p>
         {% endfor %}
     </div>
-</div>
-{% endblock %}
+</body>
+</html>

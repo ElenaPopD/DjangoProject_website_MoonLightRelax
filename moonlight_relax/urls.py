@@ -17,7 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from django.conf import settings
+from django.conf.urls.static import static
 from salon import views
+from .settings import MEDIA_ROOT, MEDIA_URL
 
 
 urlpatterns = [
@@ -27,4 +30,12 @@ urlpatterns = [
     path('servicii/', views.servicii, name='servicii'),
     path('programare/', views.programare, name='programare'),
 
-] 
+] + static(MEDIA_URL, document_root=MEDIA_ROOT)
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+        # ... restul pattern-urilor tale de URL
+    ] + urlpatterns
