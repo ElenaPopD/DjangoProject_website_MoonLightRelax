@@ -1,15 +1,13 @@
 from django import forms
-from django.contrib.auth import authenticate
-from django.forms import ValidationError
+from django.forms import ValidationError  # noqa: F401
 
+from .models import Programare 
 
-class ContactForm(forms.Form):
-    email = forms.EmailField(required=True)
-    subiect = forms.CharField()
-    mesaj = forms.CharField(widget=forms.Textarea())
-
-    def clean(self):
-        cleaned_data = super().clean()
-        email = cleaned_data.get("email")
-        subiect = cleaned_data.get("subiect")
-        mesaj = cleaned_data.get("mesaj")
+class ProgramareForm(forms.ModelForm):
+    class Meta:
+        model = Programare
+        fields = ['nume', 'prenume', 'telefon', 'email', 'serviciu', 'data', 'ora', 'content']
+        widgets = {
+            'data': forms.DateInput(attrs={'type': 'date'}),
+            'ora': forms.TimeInput(attrs={'type': 'time'}),
+        }

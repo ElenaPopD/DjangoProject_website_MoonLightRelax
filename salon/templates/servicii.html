@@ -1,0 +1,33 @@
+{% block content %}
+<div class="container mt-5">
+    <h2>Serviciile Noastre</h2>
+    <div class="row">
+        {% for serviciu in servicii %}
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                {% if serviciu.imagine %}
+                <img src="{{ serviciu.imagine.url }}" class="card-img-top" alt="{{ serviciu.nume }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ serviciu.nume }}</h5>
+                    <p class="card-text">{{ serviciu.descriere|safe }}</p>
+                    <ul class="list-unstyled">
+                        <li>Durata: {{ serviciu.durata }}</li>
+                        <li>Preț: {{ serviciu.pret }} lei</li>
+                        <li>Categorie: {{ serviciu.categorie }}</li>
+                        {% if serviciu.promotion %}
+                        <li>Promoții/Reduceri: {{ serviciu.promotion }}</li>
+                        {% endif %}
+                    </ul>
+                    {% if serviciu.available %}
+                    <a href="#" class="btn btn-primary">Rezervă acum</a>
+                    {% else %}
+                    <button class="btn btn-secondary" disabled>Serviciu indisponibil</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

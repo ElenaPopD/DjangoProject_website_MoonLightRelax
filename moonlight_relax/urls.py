@@ -19,12 +19,12 @@ from django.urls import path
 from django.urls import include
 from salon import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path('', views.homepage, name='homepage'),
     path('servicii/', views.servicii, name='servicii'),
-    path('contact/', views.contact, name='contact'),
-    path('rezervari/', views.rezervari, name='rezervari'),
+    path('programare/', views.programare, name='programare'),
 
-]
+] 
