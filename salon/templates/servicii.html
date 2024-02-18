@@ -1,7 +1,7 @@
-
+<!-- 
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"> -->
+<!-- <head>
     <meta charset="UTF-8">
     <title>Serviciile Noastre</title>
     <style>
@@ -29,29 +29,43 @@
             color: red;
         }
     </style>
-</head>
-<body>
+</head> -->
+<!-- <body> -->
+
+{% extends "homepage.html" %}
+{% block content %}
     <div class="service-container">
         {% for serviciu in servicii %}
         <div class="service{% if not serviciu.available %} not-available{% endif %}">
-            {% if serviciu.imagine %}
+            <!-- {% if serviciu.imagine %}
             <img src="{{ serviciu.imagine.url }}" alt="Imagine pentru {{ serviciu.nume }}">
-            {% endif %}
-            <h2>{{ serviciu.nume }}</h2>
-            <div>{{ serviciu.descriere|safe }}</div>
+            {% endif %} -->
+            <!-- <h2>{{ serviciu.nume }}</h2> -->
+            <!-- <div>{{ serviciu.descriere|safe }}</div>
             <p>Durata: {{ serviciu.durata }}</p>
             <p>Preț: {{ serviciu.pret }} lei</p>
             <p>Categorie: {{ serviciu.categorie }}</p>
             {% if serviciu.promotion %}
             <p class="promo">Promoții/Reduceri: {{ serviciu.promotion }}</p>
             {% endif %}
-            <p>Disponibil: {{ serviciu.available|yesno:"Da,Nu" }}</p>
+            <p>Disponibil: {{ serviciu.available|yesno:"Da,Nu" }}</p> -->
             
+
+
+            <div class="card" style="width: 18rem;">
+                <img height="286px" class="card-img-top" src="{{ serviciu.imagine.url }}" alt="Imagine pentru {{ serviciu.nume }}">
+                <div class="card-body">
+                <h5 class="card-title">{{ serviciu.nume }}</h5>
+                <p class="card-text">{{ serviciu.descriere|safe }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
         
         </div>
         {% empty %}
         <p>Nu există servicii disponibile pentru afișare.</p>
         {% endfor %}
     </div>
-</body>
-</html>
+{% endblock %}
+<!-- </body> -->
+<!-- </html> -->

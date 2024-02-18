@@ -137,7 +137,7 @@ if DEBUG:
     INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["192.168.65.1", "127.0.0.1", "10.0.2.2"]
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = "services_images/"
+MEDIA_ROOT = "services_images"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
