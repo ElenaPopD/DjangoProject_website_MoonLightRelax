@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'moonlight_relax.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'moon',
+        'USER': 'elena',
+        'PASSWORD': 'Admin1234!',
+        'HOST': 'db',  # Numele serviciului db din docker-compose.yml
+        'PORT': '5432',
     }
 }
 
