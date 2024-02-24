@@ -4,7 +4,6 @@ from django.conf import settings
 from django.http import HttpResponse  # noqa: F401
 from django.contrib import messages  # Adaugă această linie
 from .models import DescriereServicii
-from django.db.models import F 
 from .forms import ProgramareForm
 
 # Create your views here.
