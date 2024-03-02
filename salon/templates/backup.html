@@ -1,0 +1,49 @@
+{% extends "homepage.html" %}
+{% block content %}
+    <div class="service-container">
+        {% for serviciu in servicii %}
+        <div class="service{% if not serviciu.available %} not-available{% endif %}">
+            <div class="card" style="width: 18rem;">
+                <img height="286px" class="card-img-top" src="{{ serviciu.imagine.url }}" alt="Imagine pentru {{ serviciu.nume }}">
+                <div class="card-body">
+                <h5 class="card-title"><b>{{ serviciu.nume }}</b></h5>
+                <!-- <p class="card-text">{{ serviciu.descriere|safe|slice:":150" }}{% if serviciu.descriere|length > 250 %}...{% endif %}</p>
+                <p>Durata: {{ serviciu.durata }}</p>
+                <p>Preț: {{ serviciu.pret }} lei</p>
+                <p>Categorie: {{ serviciu.categorie }}</p>
+                {% if serviciu.promotion %}
+                <p class="promo">Promoții/Reduceri: {{ serviciu.promotion }}</p>
+                {% endif %}
+                <p>Disponibil: {{ serviciu.available|yesno:"Da,Nu" }}</p> -->
+                <a href="#" class="btn btn-primary" onclick="showModal('{{ serviciu.nume|escapejs }}', '{{ serviciu.descriere|escapejs }}', '{{ serviciu.pret }}', '{{ serviciu.durata }}', '{{ serviciu.categorie|escapejs }}', '{{serviciu.promotion}}')">Detalii</a>
+                </div>
+            </div>
+        
+        </div>
+        {% empty %}
+        <p>Nu există servicii disponibile pentru afișare.</p>
+        {% endfor %}
+    </div>
+    <!-- Modal -->
+<div class="modal fade" id="descriereModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" style="width:95vw;" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title service-title">Descrierea Serviciului</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Conținutul modalului va fi inserat aici din JavaScript -->
+            </div>
+            <div class="padding-btn">
+                <button onclick="goToPage('/programare')" type="button" class="btn btn-success btn-block"><b>Vreau programare</b></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!-- </body> -->
+<!-- </html> -->

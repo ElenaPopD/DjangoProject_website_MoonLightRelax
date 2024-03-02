@@ -1,6 +1,8 @@
 FROM python:3.12
 # instalez dependinte
 RUN apt-get update && apt-get install build-essential graphviz graphviz-dev -y
+# Instalează clientul psql
+RUN apt-get install -y postgresql-client
 # Copiez tot conținutul directorului curent în container
 COPY . /moonlight_relax
 WORKDIR /moonlight_relax

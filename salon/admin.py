@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Programare, DescriereServicii
+from .models import Programare, DescriereServicii, Despre
 from .views import send_confirmation_email
 # Register your models here.
 
@@ -51,3 +51,15 @@ class DescriereServiciiAdmin(admin.ModelAdmin):
     search_fields = ('nume', 'descriere', 'durata', 'pret', 'categorie', 'available', 'added_on', 'last_updated', 'promotion')
 
 admin.site.register(DescriereServicii, DescriereServiciiAdmin)
+
+class DespreAdmin(admin.ModelAdmin):
+    nume = "Despre"
+    list_display = ('nume', 'imagine', 'descriere', 'added_on', 'last_updated')
+    list_filter = ('added_on', 'last_updated')
+    search_fields = ('nume', 'imagine', 'descriere', 'added_on', 'last_updated')
+
+
+
+admin.site.register(Despre, DespreAdmin)
+
+

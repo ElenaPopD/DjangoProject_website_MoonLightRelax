@@ -12,6 +12,7 @@
 <form method="post" id="formularRezervare">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Rezervă</button>
+    <button type="submit" class="btn btn-success">Rezervă</button>
+
 </form>
 {% endblock %}

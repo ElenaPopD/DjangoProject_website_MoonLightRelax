@@ -14,8 +14,8 @@ class DescriereServicii(models.Model):
     available = models.BooleanField(default=True, verbose_name="Disponibil")
     added_on = models.DateTimeField(auto_now_add=True, verbose_name="Data Adăugării")
     last_updated = models.DateTimeField(auto_now=True, verbose_name="Ultima Actualizare")
-    promotion = models.TextField(blank=True, null=True, verbose_name="Promoții sau Reduceri")
-    # content = HTMLField( ) 
+    promotion = HTMLField(verbose_name="Promoții", blank=True, null=True, default="")
+    
 
     def __str__(self):
         return self.nume
@@ -41,4 +41,21 @@ class Programare(models.Model):
     class Meta:
         verbose_name_plural = "Programări"
     
+
+
+class Despre(models.Model):
+    nume = models.CharField(max_length=100, verbose_name="Nume", default="Despre")
+    imagine = models.ImageField(upload_to='about_images/', verbose_name="Imagine", blank=True, null=True)
+    descriere = HTMLField(verbose_name="Descriere")
+    added_on = models.DateTimeField(auto_now_add=True, verbose_name="Data Adăugării")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="Ultima Actualizare")
+
+    def __str__(self):
+        return "Despre"
+        
+
+    class Meta:
+        verbose_name_plural = "Despre"
+
+
 

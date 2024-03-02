@@ -5,10 +5,13 @@ from django.http import HttpResponse  # noqa: F401
 from django.contrib import messages  # Adaugă această linie
 from .models import DescriereServicii
 from .forms import ProgramareForm
+from .models import Despre
 
-# Create your views here.
+
+
 def homepage(request):
-    return render(request, 'homepage.html')
+    context = {'is_homepage': True}
+    return render(request, 'homepage.html', context)
 
 def servicii(request):
     servicii = DescriereServicii.objects.all()
@@ -47,3 +50,11 @@ def send_confirmation_email(programare, subiect_email, mesaj_email):
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [programare.email, ]
     send_mail(subject, message, email_from, recipient_list)
+
+
+
+def about(request):
+    informatii = Despre.objects.all()
+    return render(request, 'about.html', {'informatii': informatii})
+
+
