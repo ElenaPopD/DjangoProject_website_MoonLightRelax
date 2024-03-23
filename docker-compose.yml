@@ -1,7 +1,23 @@
+version: '3'
+
 services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: moon
+      POSTGRES_USER: elena
+      POSTGRES_PASSWORD: Admin1234!
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
   web:
     build: .
-    ports:
-      - 8000:8000
     volumes:
       - .:/moonlight_relax
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

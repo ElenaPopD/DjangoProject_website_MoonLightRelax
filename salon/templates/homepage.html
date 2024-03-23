@@ -1,13 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>MoonLight Relax</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+function showModal(nume, descriere, pret, durata, categorie, promotion) {
+    // Construiește conținutul modalului
+    var modalContent = '<h3>' + nume + '</h3>';
+    modalContent += '<p>' + descriere + '</p>';
+    modalContent += '<p><b>Pret: ' + pret + ' lei</b></p>';
+    modalContent += '<p><b>Durata: ' + durata + '</b></p>'; // Presupunând că durata este un string formatat corespunzător
+    modalContent += '<p><b>Categorie: ' + categorie + '</b></p>';
+    modalContent += '<p><b>Promotie: ' + promotion + '</b></p>';
+
+    // Setează conținutul în corpul modalului
+    document.querySelector('#descriereModal .modal-body').innerHTML = modalContent;
+
+    // Afișează modalul
+    $('#descriereModal').modal('show');
+};
+
+function goToPage(page) {
+    window.location.href = page;
+}
+
+  </script>
   <style>
+    /* Stilizarea generală a formularului */
+    #formularRezervare {
+      margin-top: 60px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+}
+#formularRezervare {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#formularRezervare p {
+    margin-bottom: 15px;
+}
+
+#formularRezervare label {
+  float: left;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Stilizarea input-urilor și a select-ului */
+#formularRezervare input[type="text"],
+#formularRezervare input[type="email"],
+#formularRezervare input[type="date"],
+#formularRezervare input[type="time"],
+#formularRezervare select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asigură că padding-ul și border-ul sunt incluse în lățimea totală */
+}
+
+#formularRezervare textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Permite utilizatorului să redimensioneze textarea doar pe verticală */
+}
+    .red-text{
+      color: red;
+    }
+    .card{
+      width: auto !important;
+    }
+    .service{
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .service-title{
+      font-size: 25px;
+    }
+    .modal-header{
+      text-align: center;
+      background-color: #5cb85c;
+      color: white;
+
+    }
+    
+    .service img {
+    width: -webkit-fill-available;
+    height: 200px; /* alege o înălțime care funcționează pentru tine */
+    object-fit: cover; /* asigură că imaginea acoperă spațiul disponibil fără a-și pierde proporțiile */
+}
+.carousel-img {
+  height: 500px; /* Ajustează această valoare conform nevoilor tale */
+  width: 100%;
+  object-fit: cover; /* Asigură că imaginea acoperă spațiul disponibil fără a-și pierde proporțiile */
+}
+.carousel-inner {
+  height: 500px;
+}
+
+.carousel-inner > .item > img {
+  height: 500px; /* Ajustează această valoare conform nevoilor tale */
+  object-fit: cover;
+}
+
+.padding-btn{
+  padding: 10px;
+}
+#formularRezervare{
+  width: max-content;
+    text-align: right;
+    padding: 20px;
+}
+    .service-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card-body{
+      width: 350px;
+    }
+
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -30,6 +160,60 @@
       color: white;
       padding: 15px;
     }
+    .moonlight-relax-footer{
+      z-index: 5;
+      height:35px;
+      font-size: 12px;
+
+      position: fixed;
+    width: 100%;
+    bottom: 0;
+    }
+
+    .moonlight-slider{
+      padding: 50px;
+
+    }
+    .cursor-pointer{
+      cursor: pointer;
+    }
+
+    .ws-background-image{
+      position: absolute;
+     top:0;
+     bottom: 0;
+     left:0;
+      right: 0;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .despre-sectiune{
+      z-index: 2;
+    }
+    .despre-descriere{
+      margin-left: 100px;
+      margin-right: 100px;
+      position: absolute;
+  color: white;
+  font-size: 20px;
+  z-index: 3;
+  top: 100px;
+ 
+    }
+
+    .despre-titlu{
+      left:50%;
+      right:50%;
+  position: absolute;
+  top: 30px;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  z-index: 3; /* Acest z-index asigură că textul este chiar peste imagine */
+}
     
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
@@ -51,14 +235,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#"><img height="50px" src ="http://localhost:8000/media/services_images/logo_moonlight.png"/></a>
+      <a onclick="goToPage('/')" class="navbar-brand" href="javascript:;"><img style="margin-top: -8px;" height="40px" src ="http://localhost:8000/media/services_images/logo_moonlight_relax_site.png"/></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li  onclick="goToPage('/')"><a href="javascript:;">Home</a></li>
+        <li><a href="javascript:;" onclick="goToPage('/about')">About</a></li>
+        <li onclick="goToPage('/servicii')"><a href="javascript:;">Servicii</a></li>
+        <li onclick="goToPage('/programare')"><a href="javascript:;">Rezervari</a></li>
+        <li><a href="javascript:;">Contact</a></li>
       </ul>
       
     </div>
@@ -67,28 +252,56 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-    <div class="col-sm-8 text-left"> 
-      <!-- <h1>Welcome</h1>
-      <p>Welcome to My site ~~~!!!!</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p> -->
+    <div class="col-sm-12 text-left">
       {% block content %}
+        {% if is_homepage %}
+          <h1>Bun venit la MoonLight Relax</h1>
+          <p>Bine ai venit pe pagina noastră unde găsești cele mai bune servicii de relaxare.</p>
+          <div>
+            <div id="myCarousel" class="carousel slide moonlight-slider" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+        
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active" onclick="goToPage('/servicii')">
+                <img class="carousel-img cursor-pointer" loading="lazy" src="http://localhost:8000/media/services_images/WhatsApp_Image_2024-02-23_at_14.30.30_4.jpeg" alt="masaj" style="width:100%;">
+              </div>
+        
+              <div class="item" onclick="goToPage('/servicii')">
+                <img class="cursor-pointer" src="http://localhost:8000/media/services_images/WhatsApp_Image_2024-02-23_at_14.30.30_2.jpeg" loading="lazy" alt="masaj" style="width:100%;">
+              </div>
+            
+              <div class="item" onclick="goToPage('/servicii')">
+                <img class="cursor-pointer" src="http://localhost:8000/media/services_images/WhatsApp_Image_2024-02-23_at_14.30.30_6.jpeg" loading="lazy" alt="masaj" style="width:100%;">
+              </div>
+            </div>
+          </div>
+        
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        {% else %}
+          <!-- Acest spațiu va fi populat de alte template-uri care extind base.html -->
+        {% endif %}
       {% endblock %}
     </div>
-    <!-- <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      <div class="well">
-        <p>ADS</p>
-      </div>
-    </div> -->
   </div>
 </div>
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
+<footer class="container-fluid text-center moonlight-relax-footer">
+  <p>Copyright © 2024 - MoonLight Relax</p>
 </footer>
 
 </body>

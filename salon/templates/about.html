@@ -1,0 +1,13 @@
+{% extends "homepage.html" %}
+
+{% block content %}
+{% for info in informatii %}
+<div class="despre-sectiune">
+    <h1 class="despre-titlu">{{ info.nume }}</h1>
+    <div class="despre-descriere">{{ info.descriere|safe }}</div>
+    {% if info.imagine %}
+    <img class="ws-background-image" src="{{ info.imagine.url }}" alt="{{ info.titlu }}">
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

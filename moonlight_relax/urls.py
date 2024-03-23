@@ -29,6 +29,8 @@ urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('servicii/', views.servicii, name='servicii'),
     path('programare/', views.programare, name='programare'),
+    path('about/', views.about, name='about'),
+
 
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
 
