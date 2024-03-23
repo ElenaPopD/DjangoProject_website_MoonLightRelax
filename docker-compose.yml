@@ -1,23 +1,30 @@
 version: '3'
-
 services:
   db:
     image: postgres:latest
+    env_file:
+      - .env
     environment:
-      POSTGRES_DB: moon
-      POSTGRES_USER: elena
-      POSTGRES_PASSWORD: Admin1234!
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
     volumes:
       - .:/moonlight_relax
     ports:
       - "8000:8000"
     depends_on:
       - db
+    entrypoint: ["/usr/wait-for-db.sh", "db"]
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 volumes:
   postgres_data:

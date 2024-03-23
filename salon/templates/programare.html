@@ -8,11 +8,14 @@
         {% endfor %}
     </div>
 {% endif %}
-
+<div class="home-page-content">
+    <h1 class= "emboss-effect">Programare</h1>
+    <p><i>Hai la relaxare! Completează formularul de mai jos și pașește într-un sanctuar al liniștii și al armoniei, unde timpul pare să se oprească, lăsând loc bunăstării absolute.</i></p>
 <form method="post" id="formularRezervare">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-success">Rezervă</button>
 
 </form>
+</div>
 {% endblock %}

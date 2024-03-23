@@ -30,6 +30,13 @@ function goToPage(page) {
 
   </script>
   <style>
+    body{
+      background-color: #f4f4f4;
+    }
+    .modal-body{
+      background-color: #f4f4f4;
+
+    }
     /* Stilizarea generală a formularului */
     #formularRezervare {
       margin-top: 60px;
@@ -92,12 +99,20 @@ function goToPage(page) {
     }
     .service-title{
       font-size: 25px;
+      color: #fafafa;
+    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
+    }
+    .emboss-effect{
+    
+    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
     }
     .modal-header{
       text-align: center;
       background-color: #5cb85c;
       color: white;
-
+    }
+    .modal-header .close {
+    margin-top: -30px;
     }
     
     .service img {
@@ -128,10 +143,12 @@ function goToPage(page) {
     padding: 20px;
 }
     .service-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        padding: 20px;
+      justify-content: center;
+    text-align: center;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
     }
 
     .card-body{
@@ -156,18 +173,20 @@ function goToPage(page) {
     
     /* Set black background color, white text and some padding */
     footer {
-      background-color: #555;
+      background-color: #2da518;
       color: white;
-      padding: 15px;
     }
     .moonlight-relax-footer{
       z-index: 5;
-      height:35px;
+      height:auto;
       font-size: 12px;
 
       position: fixed;
     width: 100%;
     bottom: 0;
+    }
+    .footer-green-text{
+      color: #1b610f;
     }
 
     .moonlight-slider{
@@ -197,7 +216,8 @@ function goToPage(page) {
       margin-left: 100px;
       margin-right: 100px;
       position: absolute;
-  color: white;
+      color: #fafafa;
+    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
   font-size: 20px;
   z-index: 3;
   top: 100px;
@@ -209,10 +229,41 @@ function goToPage(page) {
       right:50%;
   position: absolute;
   top: 30px;
-  color: white;
+  color: #fafafa;
+    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
   font-size: 30px;
   text-align: center;
   z-index: 3; /* Acest z-index asigură că textul este chiar peste imagine */
+}
+.carousel-control.left {
+    background-image: -webkit-linear-gradient(left, rgb(0 255 48 / 50%) 0, rgba(0, 0, 0, .0001) 100%);
+}
+.carousel-control.right {
+    background-image: -webkit-linear-gradient(right, rgb(0 255 48 / 50%) 0, rgba(0, 0, 0, .0001) 100%);
+}
+.home-page-content{
+  font-family: system-ui;
+    text-align: center;
+    color: #2ea518;
+}
+
+.navbar-inverse {
+    background-color: #2ea51899;
+    border-color: #2ea518;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #1b610f;
+    font-weight: bolder;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #4ef830;
+    font-weight: bolder;
+}
+.errorlist{
+  margin-left: 10px;
+color:red
 }
     
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -243,7 +294,7 @@ function goToPage(page) {
         <li><a href="javascript:;" onclick="goToPage('/about')">About</a></li>
         <li onclick="goToPage('/servicii')"><a href="javascript:;">Servicii</a></li>
         <li onclick="goToPage('/programare')"><a href="javascript:;">Rezervari</a></li>
-        <li><a href="javascript:;">Contact</a></li>
+        <li onclick="goToPage('/contact')"><a href="javascript:;">Contact</a></li>
       </ul>
       
     </div>
@@ -255,8 +306,9 @@ function goToPage(page) {
     <div class="col-sm-12 text-left">
       {% block content %}
         {% if is_homepage %}
-          <h1>Bun venit la MoonLight Relax</h1>
-          <p>Bine ai venit pe pagina noastră unde găsești cele mai bune servicii de relaxare.</p>
+         <div class="home-page-content">
+          <h1><b>MoonLight Relax</b></h1>
+          <p><i>Bine ai venit pe pagina noastră unde găsești cele mai bune servicii de relaxare.</i></p>
           <div>
             <div id="myCarousel" class="carousel slide moonlight-slider" data-ride="carousel">
             <!-- Indicators -->
@@ -269,15 +321,15 @@ function goToPage(page) {
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <div class="item active" onclick="goToPage('/servicii')">
-                <img class="carousel-img cursor-pointer" loading="lazy" src="http://localhost:8000/media/services_images/WhatsApp_Image_2024-02-23_at_14.30.30_4.jpeg" alt="masaj" style="width:100%;">
+                <img class="carousel-img cursor-pointer" loading="lazy" src="http://localhost:8000/media/services_images/slide1.jpg" alt="masaj" style="width:100%;">
               </div>
         
-              <div class="item" onclick="goToPage('/servicii')">
-                <img class="cursor-pointer" src="http://localhost:8000/media/services_images/WhatsApp_Image_2024-02-23_at_14.30.30_2.jpeg" loading="lazy" alt="masaj" style="width:100%;">
+              <div class="item" onclick="goToPage('/programare')">
+                <img class="cursor-pointer" src="http://localhost:8000/media/services_images/slide2.jpg" loading="lazy" alt="masaj" style="width:100%;">
               </div>
             
               <div class="item" onclick="goToPage('/servicii')">
-                <img class="cursor-pointer" src="http://localhost:8000/media/services_images/WhatsApp_Image_2024-02-23_at_14.30.30_6.jpeg" loading="lazy" alt="masaj" style="width:100%;">
+                <img class="cursor-pointer" src="http://localhost:8000/media/services_images/slide3.jpg" loading="lazy" alt="masaj" style="width:100%;">
               </div>
             </div>
           </div>
@@ -292,6 +344,7 @@ function goToPage(page) {
               <span class="sr-only">Next</span>
             </a>
           </div>
+         </div>
         {% else %}
           <!-- Acest spațiu va fi populat de alte template-uri care extind base.html -->
         {% endif %}
@@ -301,7 +354,7 @@ function goToPage(page) {
 </div>
 
 <footer class="container-fluid text-center moonlight-relax-footer">
-  <p>Copyright © 2024 - MoonLight Relax</p>
+  <b> <span class="footer-green-text">Copyright © 2024 - MoonLight Relax</span></b>
 </footer>
 
 </body>

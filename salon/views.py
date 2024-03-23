@@ -6,6 +6,7 @@ from django.contrib import messages  # Adaugă această linie
 from .models import DescriereServicii
 from .forms import ProgramareForm
 from .models import Despre
+from .models import ContactInfo
 
 
 
@@ -18,6 +19,9 @@ def servicii(request):
     return render(request, 'servicii.html', {'servicii': servicii})
 
 def programare(request):
+    programari_confirmate = Programare.objects.filter(confirmat=True, data__gte=timezone.localdate()).values_list('data', 'ora', named=True)
+    if request.method == 'POST':
+        form = ProgramareForm(request.POST, programari_confirmate=programari_confirmate)
     if request.method == 'POST':
         form = ProgramareForm(request.POST)
         if form.is_valid():
@@ -37,7 +41,7 @@ Echipa Moonlight Relax
 """
             send_confirmation_email(form.instance, subiect_email, mesaj_email)
             # Adaugă un mesaj care să fie afișat utilizatorului
-            messages.success(request, 'Rezervarea a fost înregistrată cu succes. Verifică adresa de email pentru confirmare.')
+            messages.success(request, 'ꕤ Rezervarea a fost înregistrată cu succes. Verifică adresa de email pentru confirmare! ꕤ ')
             return redirect('programare')
     else:
         form = ProgramareForm() 
@@ -58,3 +62,8 @@ def about(request):
     return render(request, 'about.html', {'informatii': informatii})
 
 
+
+
+def contact(request):
+    contact = ContactInfo.objects.all()
+    return render(request, 'contact.html', {'contact': contact})
