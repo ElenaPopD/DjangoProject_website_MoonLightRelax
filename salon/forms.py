@@ -4,7 +4,7 @@ from datetime import time
 
 from .models import Programare
 from django.core.exceptions import ValidationError
-from django.forms import DateInput, TimeInput
+from django.forms import DateInput, TimeInput  # noqa: F401
 
 class ProgramareForm(forms.ModelForm):
     # Generează opțiunile de oră (de la 09:00 la 18:00, de exemplu)
@@ -18,6 +18,7 @@ class ProgramareForm(forms.ModelForm):
         data = cleaned_data.get('data')
         ora = cleaned_data.get('ora')
         serviciu = cleaned_data.get('serviciu')
+    
 
         # Verifică dacă există deja o programare confirmată pentru aceeași dată, oră și serviciu
         if Programare.objects.filter(data=data, ora=ora, serviciu=serviciu, confirmat=True).exists():
