@@ -19,9 +19,6 @@ def servicii(request):
     return render(request, 'servicii.html', {'servicii': servicii})
 
 def programare(request):
-    programari_confirmate = Programare.objects.filter(confirmat=True, data__gte=timezone.localdate()).values_list('data', 'ora', named=True)
-    if request.method == 'POST':
-        form = ProgramareForm(request.POST, programari_confirmate=programari_confirmate)
     if request.method == 'POST':
         form = ProgramareForm(request.POST)
         if form.is_valid():
