@@ -1,15 +1,25 @@
+{% extends "homepage.html" %}
 
-{% block body %}
-<h1>Contact</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Trimite!" />
-</form>
-
-<h1>request.POST</h1>
-{{ request.POST }}
-
-<h1>request.GET</h1>
-{{ request.GET}}
-{% endblock body%}
+{% block content %}
+<div class="container contact-info">
+    {% for info in contact %}
+    <div class="contact-section">
+        <h2 class= "emboss-effect">{{ info.name }}</h2>
+        <div class="contact-content">
+            {{ info.content | safe }}
+        </div>
+        <ul class="contact-details">
+            <li>Email: <a href="mailto:{{ info.email }}">{{ info.email }}</a></li>
+            <li>Telefon: {{ info.phone }}</li>
+            <li>Facebook: <a href="{{ info.facebook_page }}" target="_blank">{{ info.facebook_page }}</a></li>
+            <li>Instagram: <a href="{{ info.instagram }}" target="_blank">{{ info.instagram }}</a></li>
+            <li>Adresă: {{ info.address }}</li>
+        </ul>
+    </div>
+    {% empty %}
+    <div class="no-contact-info">
+        <p>Momentan nu există informații de contact disponibile.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

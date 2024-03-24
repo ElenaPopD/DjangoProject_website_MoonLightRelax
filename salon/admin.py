@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Programare, DescriereServicii, Despre
+from .models import Programare, DescriereServicii, Despre, ContactInfo
 from .views import send_confirmation_email
 # Register your models here.
 
@@ -61,5 +61,7 @@ class DespreAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Despre, DespreAdmin)
+admin.site.register(ContactInfo)
+
 
 

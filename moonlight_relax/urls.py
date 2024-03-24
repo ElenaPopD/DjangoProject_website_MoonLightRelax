@@ -30,6 +30,7 @@ urlpatterns = [
     path('servicii/', views.servicii, name='servicii'),
     path('programare/', views.programare, name='programare'),
     path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
 
 
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
