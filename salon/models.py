@@ -1,10 +1,11 @@
 from django.db import models
 from tinymce.models import HTMLField
-
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
 class DescriereServicii(models.Model):
+
     nume = models.CharField(max_length=200, verbose_name="Numele Serviciului")
     descriere = HTMLField(verbose_name="Descriere")
     durata = models.DurationField(verbose_name="Durata")
@@ -25,15 +26,16 @@ class DescriereServicii(models.Model):
 
 
 class Programare(models.Model):
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Numărul de telefon trebuie să contina doar cifre în formatul: '000 000 000'. Permise până la 15 cifre.")
     nume = models.CharField(max_length=100, verbose_name="Nume", null=True)
     prenume = models.CharField(max_length=100, verbose_name="Prenume", null=True)
-    telefon = models.CharField(max_length=15, verbose_name="Număr de Telefon", null=True)
+    telefon = models.CharField(validators=[phone_regex], max_length=15, verbose_name="Număr de Telefon", null=True)  # Adăugăm validatorul aici
     email = models.EmailField(verbose_name="Email", null=True)
     serviciu = models.ForeignKey('DescriereServicii', on_delete=models.CASCADE, verbose_name="Serviciu")
     data = models.DateField(verbose_name="Data")
     ora = models.TimeField(verbose_name="Ora")
     confirmat = models.BooleanField(default=False)
-    observatii = HTMLField(verbose_name="Observații", null=True, blank=True) # Presupun că folosești o bibliotecă cum ar fi django-tinymce pentru HTMLField
+    observatii = HTMLField(verbose_name="Observații", null=True, blank=True)
 
     def __str__(self):
         return f"{self.nume} {self.prenume} - {self.data.strftime('%Y-%m-%d')} {self.ora}"
