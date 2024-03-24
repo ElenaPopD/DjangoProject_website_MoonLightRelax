@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import socket
+import socket  # noqa: F401
 import os
 from dotenv import load_dotenv
 

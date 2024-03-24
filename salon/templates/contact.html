@@ -9,11 +9,11 @@
             {{ info.content | safe }}
         </div>
         <ul class="contact-details">
-            <li>Email: <a href="mailto:{{ info.email }}">{{ info.email }}</a></li>
-            <li>Telefon: {{ info.phone }}</li>
-            <li>Facebook: <a href="{{ info.facebook_page }}" target="_blank">{{ info.facebook_page }}</a></li>
-            <li>Instagram: <a href="{{ info.instagram }}" target="_blank">{{ info.instagram }}</a></li>
-            <li>Adresă: {{ info.address }}</li>
+            <li><strong>Email: <a href="mailto:{{ info.email }}">{{ info.email }} </strong></a></li>
+            <li><strong>Telefon: {{ info.phone }}</strong> </li>
+            <li><strong>Facebook: <a href="{{ info.facebook_page }}" target="_blank">{{ info.facebook_page }}</strong></a></li>
+            <li><strong>Instagram: <a href="{{ info.instagram }}" target="_blank">{{ info.instagram }}</strong></a></li>
+            <li><strong>Adresă: {{ info.address }}</strong></li>
         </ul>
     </div>
     {% empty %}

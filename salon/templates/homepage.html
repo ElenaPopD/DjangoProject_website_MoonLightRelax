@@ -37,6 +37,11 @@ function goToPage(page) {
       background-color: #f4f4f4;
 
     }
+.contact-details{font-size: 18px;
+
+}
+
+
     /* Stilizarea generală a formularului */
     #formularRezervare {
       margin-top: 60px;
@@ -321,14 +326,14 @@ color:red
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <div class="item active" onclick="goToPage('/servicii')">
-                <img class="carousel-img cursor-pointer" loading="lazy" src="http://localhost:8000/media/services_images/slide1.jpg" alt="masaj" style="width:100%;">
+                <img class="carousel-img cursor-pointer"  src="http://localhost:8000/media/services_images/slide1.jpg" loading="lazy" alt="masaj" style="width:100%;">
               </div>
         
               <div class="item" onclick="goToPage('/programare')">
                 <img class="cursor-pointer" src="http://localhost:8000/media/services_images/slide2.jpg" loading="lazy" alt="masaj" style="width:100%;">
               </div>
             
-              <div class="item" onclick="goToPage('/servicii')">
+              <div class="item" onclick="goToPage('/contact')">
                 <img class="cursor-pointer" src="http://localhost:8000/media/services_images/slide3.jpg" loading="lazy" alt="masaj" style="width:100%;">
               </div>
             </div>
@@ -344,7 +349,7 @@ color:red
               <span class="sr-only">Next</span>
             </a>
           </div>
-         </div>
+        </div>
         {% else %}
           <!-- Acest spațiu va fi populat de alte template-uri care extind base.html -->
         {% endif %}
