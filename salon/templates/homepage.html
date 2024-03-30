@@ -32,6 +32,8 @@ function goToPage(page) {
   <style>
     body{
       background-color: #f4f4f4;
+      overflow-x: scroll;
+
     }
     .modal-body{
       background-color: #f4f4f4;
@@ -39,6 +41,10 @@ function goToPage(page) {
     }
 .contact-details{font-size: 18px;
 
+}
+.carousel-indicators {
+    position: absolute;
+    bottom: 50px;
 }
 
 
@@ -137,6 +143,35 @@ function goToPage(page) {
 .carousel-inner > .item > img {
   height: 500px; /* Ajustează această valoare conform nevoilor tale */
   object-fit: cover;
+}
+@media screen and (max-width: 500px) {
+  .carousel-inner > .item > img {
+  height: 400px; /* Ajustează această valoare conform nevoilor tale */
+  object-fit: contain;
+}
+.moonlight-slider{
+  padding: 0px !important;
+}
+.service-container{
+  padding: 0px !important;
+}
+.despre-descriere{
+  margin-right:0px !important;
+  margin-left:0px !important;
+  height: 80vh;
+    overflow: auto;
+}
+.despre-titlu {
+    left: 0px !important;
+    right: 0px !important
+}
+#formularRezervare{
+  max-width: 350px;
+}
+.contact-section{
+  word-wrap: break-word;
+  padding-bottom: 20px;
+}
 }
 
 .padding-btn{
