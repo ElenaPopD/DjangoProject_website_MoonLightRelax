@@ -273,7 +273,7 @@ function goToPage(page) {
     text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
   font-size: 30px;
   text-align: center;
-  z-index: 3; /* Acest z-index asigură că textul este chiar peste imagine */
+  z-index: 3; /*the z-index property ensures that the text is displayed above the image. */
 }
 .carousel-control.left {
     background-image: -webkit-linear-gradient(left, rgb(0 255 48 / 50%) 0, rgba(0, 0, 0, .0001) 100%);
@@ -386,7 +386,7 @@ color:red
           </div>
         </div>
         {% else %}
-          <!-- Acest spațiu va fi populat de alte template-uri care extind base.html -->
+          <!--  The space between the "BEGIN" and "END" tags will be populated by other templates that extend the "base.html" template.base.html -->
         {% endif %}
       {% endblock %}
     </div>
