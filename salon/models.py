@@ -77,3 +77,26 @@ class ContactInfo(models.Model):
     class Meta:
         verbose_name_plural = "Informații de contact"
 
+class Politica_Confidentialitate(models.Model):
+    nume = models.CharField(max_length=100, verbose_name="Nume", default="Politica de Confidențialitate")
+    continut = HTMLField(verbose_name="Conținut")
+    added_on = models.DateTimeField(auto_now_add=True, verbose_name="Data Adăugării")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="Ultima Actualizare")
+
+    def __str__(self):
+        return "Politica de Confidențialitate"
+    
+    class Meta:
+        verbose_name_plural = "Politica de Confidențialitate"
+
+class Termeni_si_conditii(models.Model):
+    nume = models.CharField(max_length=100, verbose_name="Nume", default="Termeni și Condiții")
+    continut = HTMLField(verbose_name="Conținut")
+    added_on = models.DateTimeField(auto_now_add=True, verbose_name="Data Adăugării")
+    last_updated = models.DateTimeField(auto_now=True, verbose_name="Ultima Actualizare")
+
+    def __str__(self):
+        return "Termeni și Condiții"
+    
+    class Meta:
+        verbose_name_plural = "Termeni și Condiții"

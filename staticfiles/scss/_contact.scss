@@ -1,0 +1,175 @@
+/*----------------------------------------*/
+/*  18. Contact
+/*----------------------------------------*/
+.single-address {
+	border: 2px solid #eaedff;
+	padding: 50px 30px;
+	padding-bottom: 22px;
+}
+.single-address span {
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 500;
+	color: #959f9c;
+    display: block;
+    padding-bottom: 10px;
+}
+.single-address img {
+	margin-bottom: 20px;
+}
+.address-info h2 {
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+.address-info p {
+	font-size: 16px;
+	color: #6a6560;
+	margin-bottom: 4px;
+}
+.address-info {
+	margin-bottom: 30px;
+}
+.contact-area {
+	background: #F4F9FC;
+}
+.contact-map{
+    min-height: 600px;
+}
+.contact-form{
+    .name{
+        position: relative;
+        margin-bottom: 40px;
+        label{
+            font-size: 16px;
+            font-weight: 500;
+            color: $black;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            span{
+                color: $brown;
+            }
+        }
+        &:before{
+            position: absolute;
+            content: '\f007';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 400;
+            color: $brown;
+            top: 63px;
+            left: 50px;
+        }
+    }
+    .email{
+        position: relative;
+        margin-bottom: 40px;
+        label{
+            font-size: 16px;
+            font-weight: 500;
+            color: $black;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            span{
+                color: $brown;
+            }
+        }
+        &:before{
+            position: absolute;
+            content: '\f0e0';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 400;
+            color: $brown;
+            top: 63px;
+            left: 50px;
+        }
+    }
+    .phone {
+        position: relative;
+        margin-bottom: 40px;
+        label{
+            font-size: 16px;
+            font-weight: 500;
+            color: $black;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            span{
+                color: $brown;
+            }
+        }
+        &:before{
+            position: absolute;
+            content: '\f095';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: $brown;
+            top: 63px;
+            left: 50px;
+        }
+    }
+    .service {
+        position: relative;
+        margin-bottom: 40px;
+        label{
+            font-size: 16px;
+            font-weight: 500;
+            color: $black;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            span{
+                color: $brown;
+            }
+        }
+        &:before{
+            position: absolute;
+            content: '\f044';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 400;
+            color: $brown;
+            top: 63px;
+            left: 50px;
+        }
+    }
+    .massage {
+        position: relative;
+        margin-bottom: 40px;
+        label{
+            font-size: 16px;
+            font-weight: 500;
+            color: $black;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        &:before{
+            position: absolute;
+            content: '\f075';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 400;
+            color: $brown;
+            top: 63px;
+            left: 50px;
+        }
+    }
+    input{
+        width: 100%;
+        padding: 20px 95px;
+        background: $white;
+        border: none;
+    }
+    textarea {
+        width: 100%;
+        padding: 20px 95px;
+        background: $white;
+        border: none;
+    }
+}

@@ -1,21 +1,440 @@
-{% extends "homepage.html" %}
+<!doctype html>
 
-{% block content %}
-{% if messages %}
-    <div>
-        {% for message in messages %}
-            <p><strong>{{ message }}</strong></p>
-        {% endfor %}
-    </div>
-{% endif %}
-<div class="home-page-content">
-    <h1 class= "emboss-effect">Programare</h1>
-    <p><i>Hai la relaxare! Completează formularul de mai jos și pașește într-un sanctuar al liniștii și al armoniei, unde timpul pare să se oprească, lăsând loc bunăstării absolute.</i></p>
-<form method="post" id="formularRezervare">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Rezervă</button>
+<html class="no-js" lang="">
+{% load static %}
 
-</form>
-</div>
-{% endblock %}
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>MoonLight Relax</title>
+
+    <meta name="description" content="Rezervă-ți un loc la Moonlight Relax pentru o sesiune de masaj de relaxare. Completează formularul nostru de programare online și pregătește-te să experimentezi momente de răsfăț și liniște interioară.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- Place favicon.ico in the root directory -->
+
+
+
+    <!-- CSS here -->
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <style>
+        #formularRezervare {
+            margin-top: 60px;
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #formularRezervare {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #formularRezervare p {
+            margin-bottom: 15px;
+        }
+
+        #formularRezervare label {
+            float: left;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        /* Stilizarea input-urilor și a select-ului */
+        #formularRezervare input[type="text"],
+        #formularRezervare input[type="email"],
+        #formularRezervare input[type="date"],
+        #formularRezervare input[type="time"],
+        #formularRezervare select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            /* Asigură că padding-ul și border-ul sunt incluse în lățimea totală */
+        }
+
+        #formularRezervare textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            /* Permite utilizatorului să redimensioneze textarea doar pe verticală */
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+
+    <!-- Header Area Start -->
+
+    <header>
+
+        <div class="header-area black-bg">
+
+            <div class="container-fluid">
+
+                <div class="row no-gutters">
+
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+
+                        <div class="logo">
+
+                            <a href="/"><img src="{% static 'img/logo_bun.png' %}" alt="MoonLight Relax Logo"></a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-6 col-lg-10 col-md-8">
+
+                        <div class="main-menu">
+
+                            <nav id="mobile-menu">
+
+                                <ul>
+                                    <li><a href="/">home</a></li>
+
+                                    <li><a href="/about">despre</a></li>
+
+                                    <li><a href="/servicii">Servicii</a></li>
+                                    <li><a href="/programare">Rezervări</a></li>
+
+                                    <li><a href="/contact">contact</a></li>
+
+                                </ul>
+
+                            </nav>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-3 d-none d-xl-block">
+
+                        <div class="header-btn ">
+
+                            <a class="theme-btn" href="tel:+40751429527"><i class="fas fa-phone"></i>Telefon</a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+
+                        <div class="mobile-menu"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- Header Area End -->
+
+
+
+    <!-- Main Area Start -->
+
+    <main>
+
+        <!-- Banner Area Start -->
+
+        <section class="benner-area black-bg ">
+
+            <div class="banner text-center d-flex align-items-center justify-content-center"
+                style="background: url('{{ STATIC_URL }}img/slider/background.jpg')  center center / cover;">
+
+                <div class="banner-content">
+
+                    <h1>Rezervări</h1>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Banner Area End -->
+
+
+
+        <!-- Features 2 Area Start -->
+
+        <section class="features2-area pt-115 pb-120">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-xl-6 col-lg-6 col-md-12">
+
+                        <div class="features2-content mb-30">
+
+                            <span class="small-title ">MoonLightRelax</span>
+
+                            <h2>Centru de Relaxare şi Masaj - Servicii Profesionale în Liniște și Confort.</h2>
+
+                            <p>Completează formularul alăturat, iar noi te vom contacta telefonic
+                                în cel mai scurt timp pentru a stabili detaliile programării și a confirma împreună cu
+                                tine.
+                                Nu uita să adaugi în secțiunea de observații orice nelămuriri ai,
+
+                                pentru a putea să le clarificăm împreună.</p>
+
+                            <p>Oferă-ți momentul de relaxare pe care îl meriți!
+                                Eliberează-te de stres și reîncarcă-te cu energie pozitivă.
+                                Așteptăm cu nerăbdare să te întâmpinăm la salonul nostru unde binele tău
+                                este întotdeauna pe primul loc
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-12">
+
+                        <div class="about-img mb-30">
+
+                            <!-- <img src="{% static 'img/about.png' %}" alt="About"> -->
+                            {% block content %}
+                            {% if messages %}
+                            <div>
+                                {% for message in messages %}
+                                <p><strong>{{ message }}</strong></p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            <div class="home-page-content">
+                                <h1>Programare</h1>
+                                <p><i>Hai la relaxare! Completează formularul de mai jos și pașește într-un sanctuar al
+                                        liniștii și al armoniei, unde timpul pare să se oprească, lăsând loc bunăstării
+                                        absolute.</i></p>
+                                <form method="post" id="formularRezervare">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" class="btn btn-success">Rezervă</button>
+
+                                </form>
+                            </div>
+                            {% endblock %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Features 2 Area End -->
+
+
+        <!-- Subscribe Area Start -->
+
+        <section class="subscribe-area subscribe-fix">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-xl-12">
+
+                        <div class="subscribe-content pt-115 pb-120 text-center">
+
+                            <span class="small-title">MoonLight Relax</span>
+
+                            <h1>Masajul este o cale esențială spre o viață mai plină de sănătate și fericire, deschizând
+                                porțile relaxării profunde și revitalizării atât fizice,
+                                cât și mentale.</h1>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Subscribe Area End -->
+
+    </main>
+
+
+
+
+    <!-- Footer Area Start -->
+
+    <footer>
+
+        <!-- Footer Top Area Start -->
+
+        <section class="footer-area black-bg pt-115 pb-120">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+
+                        <div class="footer-widget">
+
+                            <div class="footer-logo">
+
+                                <img src="{% static 'img/logo.png' %}" alt="MoonLight Relax Logo">
+
+                            </div>
+
+                            <p>Nu uita că relaxarea este o artă. Oferă-ți o pauză de liniște.
+                                Vino la un masaj și redescoperă armonia interioară.</p>
+
+                            <div class="footer-social-link">
+
+                                <ul>
+
+                                    <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+
+                                    <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+
+                                    <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-5 col-lg-5 col-md-6 d-flex justify-content-center">
+
+                        <div class="footer-widget pl-30">
+
+                            <h2>Links</h2>
+
+                            <div class="footer-menu">
+
+                                <ul>
+
+                                    <li><a href="/">Home</a></li>
+
+                                    <li><a href="/about">Despre</a></li>
+
+                                    <li><a href="/servicii">Servicii</a></li>
+
+                                    <li><a href="/programare">Rezervări</a></li>
+
+                                    <li><a href="/contact">Contact</a></li>
+
+                                    <li><a href="/politica-confidentialitate">Politica de Confidențialitate</a></li>
+
+                                    <li><a href="/termeni-si-conditii">Termeni și Condiții</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+
+        </section>
+
+        <!-- Footer Top Area End -->
+
+
+
+        <section class="footer-bottom pt-25 pb-25 theme-bg">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-xl-12">
+
+                        <div class="copyright text-center">
+
+                            <h6>Copyright by@MoonLightRelax - 2024</h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </footer>
+
+    <!-- Footer Area End -->
+
+    <!-- JS here -->
+
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/one-page-nav-min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
+    <script src="{% static 'js/ajax-form.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,6 +1,10 @@
 from django.contrib import admin
 from .models import Programare, DescriereServicii, Despre, ContactInfo
 from .views import send_confirmation_email
+from .models import Politica_Confidentialitate
+from .models import Termeni_si_conditii
+
+
 # Register your models here.
 
 class ProgramareAdmin(admin.ModelAdmin):
@@ -62,6 +66,6 @@ class DespreAdmin(admin.ModelAdmin):
 
 admin.site.register(Despre, DespreAdmin)
 admin.site.register(ContactInfo)
-
-
+admin.site.register(Politica_Confidentialitate)
+admin.site.register(Termeni_si_conditii)
 

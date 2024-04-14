@@ -1,0 +1,126 @@
+/* Button Background Style */
+%btn{
+    text-transform: uppercase;
+    padding: 25px 45px 22px;
+    display: inline-block;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: $black;
+    background: transparent;
+    font-family: $rubik;
+    line-height: 1;
+    text-align: center;
+    font-size: 14px;
+}
+%btn-style-1 {
+    padding: 22px 40px;
+    display: inline-block;
+    @include transition(.3s);
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: $rubik;
+    font-size: 14px;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    letter-spacing: 2px;
+}
+
+%theme-btn {
+    @extend %btn;
+    color: $black;
+    background: $theme-color;
+}
+
+%black-btn{
+    @extend %btn;
+    color: $white;
+    background: $black;
+}
+
+
+%blue-btn{
+    @extend %btn-style-1;
+    color: $white;
+    background: $blue;
+}
+%pink-btn{
+    @extend %btn-style-1;
+    color: $white;
+    background: $pink;
+}
+
+%brown-btn{
+    @extend %btn;
+    color: $white;
+    background: $brown;
+    border-radius: 40px;
+    border: 2px solid $brown;
+}
+%grey-border{
+    @extend %btn;
+    color: #9a9a9a;
+    border-radius: 40px;
+    border: 2px solid #9a9a9a;
+}
+
+%border-btn {
+    @extend %btn;
+    border: 2px solid $theme-color;
+    color: $theme-color;
+}
+/* Small Heding Title*/
+%small-heading{
+    color: #a19d98;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: $rubik;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+%title-span{
+    color: $black;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    display: inline-block;
+    font-family: $rubik;
+}
+%title-heading{
+    font-size: 55px;
+    font-family: $domine;
+    line-height: 60px;
+    margin-top: 10px;
+    padding-bottom: 2;
+    @media #{$xs} {
+        font-size: 32px;
+        line-height: 1;
+    }
+}
+%title-after{
+    position: absolute;
+    content: '';
+    background: url('../img/border-shape.png') center center / cover;
+    width: 82px;
+    height: 10px;
+    transform: translateX(-50%);
+    top: 120px;
+    left: 50%;
+    display: none
+}
+%title-after-1{
+    position: absolute;
+    content: '';
+    background: url('../img/pink-border-shape.png') center center / cover;
+    width: 82px;
+    height: 10px;
+    transform: translateX(-50%);
+    top: 100%;
+    left: 50%;
+    display: none;
+}

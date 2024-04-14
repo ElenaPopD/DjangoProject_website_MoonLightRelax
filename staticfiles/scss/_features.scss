@@ -1,0 +1,144 @@
+/*----------------------------------------*/
+/*  05. Features
+/*----------------------------------------*/
+.features-area{
+    &.about{
+        position: relative;
+        top: 420px;
+    }
+
+}
+.feature-item{
+    @include transition(.3s);
+    &:hover{
+        .feature-icon {
+            background: $black;
+        }
+    }
+}
+.feature-icon {
+    width: 140px;
+    height: 140px;
+    line-height: 135px;
+    margin: auto;
+    background: $white;
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.04);
+    margin-bottom: 30px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    @include transition(.3s);
+    &:hover{
+        background: $black;
+    }
+}
+.feature-content {
+    h3 {
+        margin: 0 auto;
+        margin-bottom: 15px;
+        padding: 0 40px;
+        @media #{$lg}{
+            font-size: 22px;
+        }
+        @media #{$md}{
+            padding: 0 25px;
+        }
+        @media #{$mobile}{
+            padding: 0;
+        }
+    }
+
+    p {
+        padding: 0 30px;
+        margin: 0;
+        @media #{$lg}{
+            padding: 0 15px;
+        }
+        @media #{$md}{
+            padding: 0 20px;
+        }
+        @media #{$mobile}{
+            padding: 0;
+        }
+    }
+}
+
+.features-wrapper{
+    border: 2px solid #d8dbff;
+    padding: 55px;
+    @media #{$lg}{
+        padding: 30px;
+    }
+    @media #{$md}{
+        padding: 20px;
+    }
+    @media #{$mobile}{
+        padding: 30px;
+    }
+    @include transition(.3s);
+    .icon{
+        margin-bottom: 35px;
+    }
+    h4{
+        line-height: 1;
+        padding-bottom: 10px;
+        a {
+            font-size: 24px;
+            @include transition(.3s);
+            color: $black-1;
+            @media #{$lg}{
+                font-size: 20px;
+            }
+            &:hover{
+                color: $pink;
+            }
+        }
+    }
+    p{
+        color: $dimgrey;
+        margin-bottom: 18px;
+    }
+    a{
+        color: $dimgrey;
+        @include transition(.3s);
+        &:hover {
+            color: $pink;
+        }
+    }
+    &:hover{
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.1);
+        border-color: transparent;
+    }
+
+}
+.features-items{
+    .icon{
+        width: 120px;
+        height: 120px;
+        background: $brown;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 160px;
+        display: inline-block;
+        margin-bottom: 0;
+        & i{
+            color: $white;
+            font-size: 60px;
+        }
+    }
+    h4{
+        font-size: 20px;
+        color: $white;
+        padding-top: 25px;
+        padding-bottom: 15px;
+        margin-bottom: 0;
+    }
+    p{
+        color: $white;
+        margin-right: 15px;
+    }
+}
+
