@@ -1,0 +1,326 @@
+/*----------------------------------------*/
+/*  07. Services
+/*----------------------------------------*/
+.service-item {
+    position: relative;
+    overflow: hidden;
+    @include transition(.3s);
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+        @include transition(.3s);
+    }
+
+    &:hover {
+        .service-content {
+            top: 50%;
+            transform: translateY(-50%);
+            h4 {
+                margin-bottom: 30px;
+            }
+        }
+        &:before {
+            background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+    }
+}
+.service-img {
+    img {
+        width: 100%;
+    }
+}
+.service-title {
+    position: relative;
+    span {
+        color: #a19d98;
+    }
+
+    h1 {
+        margin-bottom: 15px;
+    }
+}
+.service-content {
+    position: absolute;
+    top: 85%;
+    @include transition(.3s);
+    @media #{$xs}{
+        top: 90%;
+    }
+    @media #{$mobile}{
+        top: 88%;
+    }
+
+    h4 {
+        color: $white;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 14px;
+        margin: 0;
+        font-weight: 500;
+        margin-bottom: 30px;
+        font-family: $rubik;
+    }
+
+    p {
+        color: $white;
+        padding: 0 30px;
+        padding-bottom: 5px;
+    }
+
+    a {
+        background: $theme-color;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        display: inline-block;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        &:hover{
+            background: $black;
+            color: $white;
+        }
+    }
+}
+
+.service-tabs{
+    padding-right: 50px;
+    padding-left: 50px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 16px 32px 0px rgba(133, 133, 133, 0.1);
+    @media #{$lg}{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    @media #{$md}{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    @media #{$xs}{
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+.service-list{
+    width: 178px;
+    text-align: center;
+    @media #{$lg}{
+        width: 155px;
+    }
+    @media #{$md}{
+        width: 115px;
+    }
+    @media #{$xs}{
+        width: 135px;
+    }
+    @media #{$sm}{
+        width: 125px;
+    }
+    a{
+        text-transform: uppercase;
+        text-align: center;
+        display: block;
+        padding: 40px 0 30px;
+        border-bottom: 4px solid #f8f8f8;
+        font-weight: 500;
+        position: relative;
+        &.active{
+            background: #fafafa;
+            color: #222222;
+        }
+    }
+    .icon{
+        display: block;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+}
+
+.service-list a::before {
+	content: '';
+	width: 0;
+	height: 4px;
+	position: absolute;
+	bottom: -4px;
+	left: 100%;
+	background: $brown;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.service-list a.active::before, .service-list a:hover::before {
+	width: 100%;
+	left: 0;
+	-webkit-transition: width 0.3s ease;
+	transition: width 0.3s ease;
+}
+
+.tab-img img {
+	width: 100%;
+}
+.tab-img {
+    @media #{$md} {
+        padding-bottom: 20px;
+    }
+    @media #{$xs} {
+        padding-bottom: 20px;
+    }
+}
+.service-caption{
+    padding-left: 30px;
+    @media #{$md} {
+        padding-left: 0;
+        padding: 20px;
+        padding-top: 0;
+    }
+    @media #{$xs} {
+        padding-left: 0;
+        padding: 20px;
+        padding-top: 0;
+    }
+    @media #{$lg} {
+       padding-left: 0;
+    }
+    & h1{
+        @media #{$lg} {
+            font-size: 40px;
+        }
+        @media #{$md} {
+            font-size: 40px;
+        }
+        @media #{$xs} {
+            font-size: 32px;
+        }
+    }
+    .service-pricing{
+        span{
+            color: $brown;
+            font-weight: 500;
+        }
+        del{
+            color: #d0d0d0;
+            font-weight: 500;
+            margin-left: 15px;
+        }
+    }
+    p{
+        margin-top: 25px;
+        margin-right: 10px;
+    }
+    a{
+        margin-top: 15px;
+    }
+}
+.service-arch-content{
+    position: relative;
+    .service-icon{
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        background: #e8d2b8;
+        border-radius: 50%;
+        margin: auto;
+        margin-bottom: 25px;
+        margin-top: -35px;
+    }
+    h4{
+        font-size: 26px;
+        @include transition(.3s);
+        &:hover{
+            color: #e8d2b8;
+        }
+    }
+    p{
+        padding: 0 30px;
+        margin-top: 20px;
+    }
+    ul{
+        li{
+            display: inline-block;
+            a{
+                font-weight: 500;
+                margin-right: 5px;
+                color: #adaaa7;
+            }
+        }
+    }
+}
+.service-arch-content ul li a.brown-color{
+    color: #ba9870;
+}
+.service-price-inner{
+    background: $white;
+    .pricing-amount{
+        padding: 45px 0 35px;
+        background: $theme-color;
+        h6{
+            color: #a39e98;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+        h2{
+            font-size: 40px;
+            sub{
+                font-size: 14px;
+                color: #847d76;
+                text-transform: lowercase;
+            }
+        }
+    }
+    .pricing-content{
+        padding-top: 43px;
+        padding-bottom: 50px;
+        ul{
+            li{
+                color: #a39e98;
+                margin-bottom: 15px;
+            }
+        }
+        a{
+            margin-top: 20px;
+        }
+    }
+}
+
+.service-details-content{
+    h2{
+        padding-top: 17px;
+        padding-bottom: 20px;
+        padding-right: 70px;
+    }
+    p{
+        padding-bottom: 10px;
+        padding-right: 60px;
+    }
+}
+.service-details-categories{
+    padding: 65px 55px;
+    border: 8px solid #f9f9f9;
+    @media #{$xs}{
+        padding: 40px 30px;
+    }
+    h4{
+        font-size: 34px;
+        padding-bottom: 25px;
+    }
+    ul{
+        li{
+            padding-bottom: 25px;
+            span{
+                font-weight: 500;
+                display: inline-block;
+                width: 120px;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.details-img img {
+	width: 100%;
+}

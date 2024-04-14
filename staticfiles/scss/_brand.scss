@@ -1,0 +1,32 @@
+/*----------------------------------------*/
+/*  16. Brand
+/*----------------------------------------*/
+.brand-area{
+    min-height: 885px;
+    @media #{$md}{
+        min-height: 650px;
+    }
+    span{
+        color: $pink;
+        margin-bottom: 20px;
+        display: block;
+    }
+    h1{
+        margin-bottom: 65px;
+        padding-right: 65px;
+        @media #{$lg}{
+            font-size: 40px;
+        }
+        @media #{$md}{
+            padding-right: 0;
+            font-size: 40px;
+        }
+        @media #{$xs}{
+            padding-right: 0;
+            font-size: 40px;
+        }
+    }
+}
+.owl-carousel .owl-item .single-image img {
+	width: auto;
+}

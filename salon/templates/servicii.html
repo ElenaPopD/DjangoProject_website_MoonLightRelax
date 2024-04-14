@@ -1,55 +1,333 @@
-{% extends "homepage.html" %}
-{% block content %}
-    <div class="service-container">
-        {% for serviciu in servicii %}
-        {% if serviciu.available %}
-        <div class="service not-available">
-            <div class="card" style="width: 18rem;">
-                <img height="286px" class="card-img-top" src="{{ serviciu.imagine.url }}" alt="Imagine pentru {{ serviciu.nume }}">
-                <div class="card-body">
-                <h5 class="card-title"><b>{{ serviciu.nume }}</b></h5>
-                <a href="#" class="btn btn-success" onclick="showModal('{{ serviciu.nume|escapejs }}', '{{ serviciu.descriere|escapejs }}', '{{ serviciu.pret }}', '{{ serviciu.durata }}', '{{ serviciu.categorie|escapejs }}', '{{serviciu.promotion}}')">Detalii</a>
+<!doctype html>
+
+<html class="no-js" lang="">
+{% load static %}
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>MoonLight Relax</title>
+
+    <meta name="description" content="Descoperă gama noastră variată de servicii de masaj terapeutic oferite la Moonlight Relax. De la masaj suedez la masaj de relaxare și masaj cu pietre calde, avem tot ce ai nevoie pentru a-ți revigora mintea, corpul și spiritul.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- Place favicon.ico in the root directory -->
+
+
+
+    <!-- CSS here -->
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+</head>
+
+<body>
+
+
+
+    <!-- Header Area Start -->
+    <header>
+
+        <div class="header-area black-bg">
+
+            <div class="container-fluid">
+
+                <div class="row no-gutters">
+
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+
+                        <div class="logo">
+
+                            <a href="/"><img src="{% static 'img/logo_bun.png' %}" alt="MoonLight Relax Logo"></a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-6 col-lg-10 col-md-8">
+
+                        <div class="main-menu">
+
+                            <nav id="mobile-menu">
+
+                                <ul>
+
+                                    <li><a href="/">home</a></li>
+
+                                    <li><a href="/about">despre</a></li>
+
+                                    <li><a href="/servicii">Servicii</a></li>
+                                    <li><a href="/programare">Rezervări</a></li>
+
+                                    <li><a href="/contact">contact</a></li>
+
+                                </ul>
+
+                            </nav>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-3 d-none d-xl-block">
+
+                        <div class="header-btn ">
+
+                            <a class="theme-btn" href="tel:+40751429527"><i class="fas fa-phone"></i>Telefon</a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+
+                        <div class="mobile-menu"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- Header Area End -->
+
+
+
+    <!-- Main Area Start -->
+
+    <main>
+
+        <!-- Banner Area Start -->
+
+        <section class="benner-area black-bg">
+            <div class="banner text-center d-flex align-items-center justify-content-center"
+                style="background: url('{{ STATIC_URL }}img/slider/slider-01.png')  center center / cover;">
+                <div class="banner-content">
+
+                    <h1>Servicii</h1>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Banner Area End -->
+
+
+
+        <!-- Service Archive -->
+
+        <section class="service-archive pt-120 pb-60">
+            <div class="container">
+                <div class="row">
+                    {% block content %}
+                    {% for serviciu in servicii %}
+                    {% if serviciu.available %}
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                        <div class="service-inner mb-50">
+                            <div class="service-img">
+                                <img src="{{ serviciu.imagine.url }}" alt="MoonLight Relax Servicii">
+                            </div>
+                            <div class="service-arch-content text-center">
+                                <div class="service-icon">
+                                    <img src="{% static '/img/icon/service-10.png' %}" alt="MoonLight Relax Servicii">
+                                </div>
+                                <h4><a href="/programare">{{ serviciu.nume }}</a></h4>
+                                <p>{{ serviciu.descriere|safe }}</p>
+                                <ul>
+                                    <li><a href="/programare">Durata: {{ serviciu.durata }}</a></li>
+                                    <li><a class="brown-color" href="/programare">{{ serviciu.pret }} RON</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                        <div class="service-inner mb-50">
+                            <div class="service-img">
+                                <img src="{{ serviciu.imagine.url }}" alt="MoonLight Relax Servicii">
+                            </div>
+                            <div class="service-arch-content text-center">
+                                <div class="service-icon">
+                                    <img src="{% static 'img/icon/service-10.png' %}" alt="MoonLight Relax Servicii">
+                                </div>
+                                <h4><a href="/programare">{{ serviciu.nume }}</a></h4>
+                                <p>Momentan, acest serviciu nu este disponibil.</p>
+                                <ul>
+                                    <li><a href="/programare">{{ serviciu.durata }}</a></li>
+                                    <li><a class="brown-color" href="/programare">{{ serviciu.pret }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endblock %}
                 </div>
             </div>
-        {% else %}
-        <!-- <div>
+        </section>
 
-        </div> -->
-        <div class="service">
-            <div class="card" style="width: 18rem;">
-                <img loading="lazy" height="286px" class="card-img-top" src="{{ serviciu.imagine.url }}" alt="Imagine pentru {{ serviciu.nume }}">
-                <div class="card-body">
-                <h5 class="card-title"><b>{{ serviciu.nume }}</b></h5>
-                <span class="red-text">Momentan, acest serviciu nu este disponibil.</span>
+        <!-- Service Archive -->
+
+    </main>
+
+    <!-- Footer Area Start -->
+
+    <footer>
+
+        <!-- Footer Top Area Start -->
+
+        <section class="footer-area black-bg pt-115 pb-120">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+
+                        <div class="footer-widget">
+
+                            <div class="footer-logo">
+
+                                <img src="{% static 'img/logo.png' %}" alt="logo">
+
+                            </div>
+
+                            <p>Nu uita că relaxarea este o artă. Oferă-ți o pauză de liniște.
+                                Vino la un masaj și redescoperă armonia interioară.</p>
+
+                            <div class="footer-social-link">
+
+                                <ul>
+                                    <li><a href="https://facebook.com" target="_blank"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+
+                                    <li><a href="https://instagram.com" target="_blank"><i
+                                                class="fab fa-instagram"></i></a></li>
+
+                                    <li><a href="https://linkedin.com" target="_blank"><i
+                                                class="fab fa-linkedin"></i></a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-5 col-lg-5 col-md-6 d-flex justify-content-center">
+
+                        <div class="footer-widget pl-30">
+
+                            <h2>Links</h2>
+
+                            <div class="footer-menu">
+
+                                <ul>
+
+                                    <li><a href="/">Home</a></li>
+
+                                    <li><a href="/about">Despre</a></li>
+
+                                    <li><a href="/servicii">Servicii</a></li>
+
+                                    <li><a href="/programare">Rezervări</a></li>
+
+                                    <li><a href="/contact">Contact</a></li>
+
+                                    <li><a href="/politica-confidentialitate">Politica de Confidențialitate</a></li>
+
+                                    <li><a href="/termeni-si-conditii">Termeni și Condiții</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        {% endif %}
-        
-        </div>
-        {% empty %}
-        <p>Nu există servicii disponibile pentru afișare.</p>
-        {% endfor %}
-    </div>
-    <!-- Modal -->
-<div class="modal fade" id="descriereModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" style="width:95vw;" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title service-title">Descrierea Serviciului</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Conținutul modalului va fi inserat aici din JavaScript -->
-            </div>
-            <div class="padding-btn">
-                <button onclick="goToPage('/programare')" type="button" class="btn btn-success btn-block"><b class="emboss-effect">Vreau programare</b></button>
-            </div>
-        </div>
-    </div>
-</div>
 
-{% endblock %}
-<!-- </body> -->
-<!-- </html> -->
+            </div>
+
+            </div>
+
+        </section>
+
+        <!-- Footer Top Area End -->
+
+
+
+        <section class="footer-bottom pt-25 pb-25 theme-bg">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-xl-12">
+
+                        <div class="copyright text-center">
+
+                            <h6>Copyright by@MoonLightRelax - 2024</h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </footer>
+
+    <!-- Footer Area End -->
+
+    <!-- JS here -->
+
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/one-page-nav-min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
+    <script src="{% static 'js/ajax-form.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+
+
+</body>
+
+</html>

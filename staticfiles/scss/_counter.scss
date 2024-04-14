@@ -1,0 +1,63 @@
+/*----------------------------------------*/
+/*  17. Counter
+/*----------------------------------------*/
+.counter{
+    position: relative;
+    background: $brown;
+    height: 100%;
+    min-height: 500px;
+    @media #{$md}{
+        padding: 10px;
+    }
+    &.active{
+        .counter-img{
+            opacity: 1;
+        }
+    }
+}
+.counter-img{
+    opacity: 0;
+    @include transition(.3s);
+}
+.icon{
+    margin-bottom: 45px;
+    @media #{$laptop}{
+        margin-bottom: 10px;
+    }
+    @media #{$lg}{
+        margin-bottom: 15px;
+    }
+}
+.counter-content .icon img{
+    @media #{$md}{
+        width: 80px;
+    }
+}
+.counter-content{
+    padding: 30px 75px;
+        padding-top: 30px;
+    padding-top: 35px;
+    @media #{$lg}{
+        padding: 30px;
+    }
+    @media #{$xs}{
+        padding: 30px 20px;
+    }
+    @media #{$md}{
+        padding: 30px;
+    }
+    @media #{$laptop}{
+        padding: 35px 25px;
+    }
+    h3{
+        color: $white;
+        margin-bottom: 26px;
+        @media #{$laptop}{
+            margin-bottom: 20px;
+        }
+    }
+    p{
+        color: $white;
+        margin: 0;
+    }
+}

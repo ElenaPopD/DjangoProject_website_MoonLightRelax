@@ -7,18 +7,18 @@ from .models import DescriereServicii
 from .forms import ProgramareForm
 from .models import Despre
 from .models import ContactInfo
-# from django.views.decorators.cache import cache_page
+from .models import Politica_Confidentialitate
+from .models import Termeni_si_conditii
 
 
 
-# Cache valid for 15 minutes
-# @cache_page(60 * 15)
+
+
 def homepage(request):
     context = {'is_homepage': True}
     return render(request, 'homepage.html', context)
 
 
-# @cache_page(60 * 15)
 def servicii(request):
     servicii = DescriereServicii.objects.all()
     return render(request, 'servicii.html', {'servicii': servicii})
@@ -57,14 +57,24 @@ def send_confirmation_email(programare, subiect_email, mesaj_email):
     recipient_list = [programare.email, ]
     send_mail(subject, message, email_from, recipient_list)
 
-# Cache valid for 15 minutes
-# @cache_page(60 * 15)
+
 def about(request):
     informatii = Despre.objects.all()
     return render(request, 'about.html', {'informatii': informatii})
 
-# Cache valid for 15 minutes
-# @cache_page(60 * 15)
+
 def contact(request):
     contact = ContactInfo.objects.all()
     return render(request, 'contact.html', {'contact': contact})
+
+
+
+def politica_confidentialitate(request):
+    politica = Politica_Confidentialitate.objects.first()  # Obțineți prima instanță a politicii de confidențialitate
+    return render(request, 'politica_confidentialitate.html', {'politica': politica})
+
+
+
+def termeni_si_conditii(request):
+    termeni = Termeni_si_conditii.objects.first()  # Obțineți prima instanță a Termenilor și Condițiilor
+    return render(request, 'termeni_si_conditii.html', {'termeni': termeni})

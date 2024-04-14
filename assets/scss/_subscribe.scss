@@ -1,0 +1,77 @@
+/*----------------------------------------*/
+/*  13. Subscribe
+/*----------------------------------------*/
+.subscribe-area{
+    position: relative;
+    background: url('../img/subscribe-bg.png') no-repeat center center / cover;
+
+    @media #{$md} {
+        top: 0;
+    }
+
+    @media #{$xs} {
+        top: 0;
+    }
+}
+.subscribe-content{
+    h1{
+        line-height: 70px;
+        padding: 0 50px;
+        padding-top: 20px;
+        @media #{$md} {
+            font-size: 40px;
+            line-height: 50px;
+        }
+        @media #{$xs} {
+            font-size: 35px;
+            line-height: 35px;
+            padding: 0;
+            padding-top: 20px;
+        }
+    }
+}
+.subscribe-form{
+    position: relative;
+    margin-top: 60px;
+    @media #{$xs} {
+        margin-top: 30px;
+    }
+    input{
+        width: 795px;
+        background: $white;
+        border: none;
+        color: #a5a9a8;
+        padding: 30px 40px;
+
+        @media #{$md} {
+            width: 100%;
+        }
+
+        @media #{$xs} {
+            width: 100%;
+            padding: 20px 30px;
+        }
+    }
+    button{
+        position: absolute;
+        border: none;
+        top: 10px;
+        right: 198px;
+        @include transition(.3s);
+        cursor: pointer;
+        @media #{$lg}{
+            right: 77px;
+        }
+        @media #{$md}{
+            right: 12px;
+        }
+        @media #{$xs}{
+            position: unset;
+            margin-top: 10px;
+        }
+    }
+}
+.subscribe-fix{
+    position: relative;
+    top: 0;
+}

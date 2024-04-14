@@ -1,25 +1,340 @@
-{% extends "homepage.html" %}
+<!doctype html>
 
-{% block content %}
-<div class="container contact-info">
-    {% for info in contact %}
-    <div class="contact-section">
-        <h2 class= "emboss-effect">{{ info.name }}</h2>
-        <div class="contact-content">
-            {{ info.content | safe }}
+<html class="no-js" lang="">
+{% load static %}
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>MoonLight Relax</title>
+
+    <meta name="description" content="Contactează echipa noastră la Moonlight Relax pentru orice solicitare sau informație suplimentară despre serviciile noastre de masaj de relaxare. Suntem aici să răspundem la întrebările tale și să te ghidăm către o experiență plină de confort și îngrijire personală">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- Place favicon.ico in the root directory -->
+
+
+
+    <!-- CSS here -->
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+</head>
+
+
+<body>
+
+
+
+    <!-- Header Area Start -->
+
+    <header>
+
+        <div class="header-area black-bg">
+
+            <div class="container-fluid">
+
+                <div class="row no-gutters">
+
+                    <div class="col-xl-3 col-lg-2 col-md-4">
+
+                        <div class="logo">
+
+                            <a href="/"><img src="{% static 'img/logo_bun.png' %}" alt="MoonLight Relax Logo"></a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-6 col-lg-10 col-md-8">
+
+                        <div class="main-menu">
+
+                            <nav id="mobile-menu">
+
+                                <ul>
+                                    <li><a href="/">home</a></li>
+
+                                    <li><a href="/about">despre</a></li>
+
+                                    <li><a href="/servicii">Servicii</a></li>
+                                    <li><a href="/programare">Rezervari</a></li>
+
+                                    <li><a href="/contact">Contact</a></li>
+
+                                </ul>
+
+                            </nav>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-3 d-none d-xl-block">
+
+                        <div class="header-btn ">
+
+                            <a class="theme-btn" href="tel:+40751429527"><i class="fas fa-phone"></i>Telefon</a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+
+                        <div class="mobile-menu"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <ul class="contact-details">
-            <li><strong>Email: <a href="mailto:{{ info.email }}">{{ info.email }} </strong></a></li>
-            <li><strong>Telefon: {{ info.phone }}</strong> </li>
-            <li><strong>Facebook: <a href="{{ info.facebook_page }}" target="_blank">{{ info.facebook_page }}</strong></a></li>
-            <li><strong>Instagram: <a href="{{ info.instagram }}" target="_blank">{{ info.instagram }}</strong></a></li>
-            <li><strong>Adresă: {{ info.address }}</strong></li>
-        </ul>
-    </div>
-    {% empty %}
-    <div class="no-contact-info">
-        <p>Momentan nu există informații de contact disponibile.</p>
-    </div>
-    {% endfor %}
-</div>
-{% endblock %}
+
+    </header>
+
+    <!-- Header Area End -->
+
+
+
+    <!-- Main Area Start -->
+
+    <main>
+
+        <!-- Banner Area Start -->
+
+        <section class="benner-area black-bg">
+
+            <div class="banner text-center d-flex align-items-center justify-content-center"
+                style="background: url('{{ STATIC_URL }}img/slider/background.jpg')  center center / cover;">
+
+                <div class="banner-content">
+
+                    <h1>Contact</h1>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Banner Area End -->
+
+
+
+
+
+        <section class="contact-address-area pt-120 pb-90">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6"></div>
+                    {% block content %}
+                    {% for info in contact %}
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+
+                        <div class="single-address text-center mb-30">
+
+                            <span>{{ info.name }}</span>
+                            <span> {{ info.content | safe }}</span>
+                            <img style="background-color: #343a40" src="{% static 'img/logo.png' %}" alt="logo">
+
+
+
+                            <div class="address-info">
+
+                                <h2>Adresă</h2>
+
+                                <p>{{ info.address }}</p>
+
+                            </div>
+
+                            <div class="address-info">
+
+                                <h2>Telefon</h2>
+
+                                <p>{{ info.phone }}</p>
+
+                            </div>
+
+                            <div class="address-info">
+
+                                <h2>Email</h2>
+
+                                <p><a href="mailto:{{ info.email }}" class="__cf_email__">{{ info.email }}</a></p>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                    {% endblock %}
+                    <div class="col-xl-4 col-lg-4 col-md-6"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer Area Start -->
+
+    <footer>
+
+        <!-- Footer Top Area Start -->
+
+        <section class="footer-area black-bg pt-115 pb-120">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+
+                        <div class="footer-widget">
+
+                            <div class="footer-logo">
+
+                                <img src="{% static 'img/logo.png' %}" alt="logo">
+
+                            </div>
+
+                            <p>Nu uita că relaxarea este o artă. Oferă-ți o pauză de liniște.
+                                Vino la un masaj și redescoperă armonia interioară.</p>
+
+                            <div class="footer-social-link">
+
+                                <ul>
+
+                                    <li><a href="https://facebook.com" target="_blank"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+
+                                    <li><a href="https://instagram.com" target="_blank"><i
+                                                class="fab fa-instagram"></i></a></li>
+
+                                    <li><a href="https://linkedin.com" target="_blank"><i
+                                                class="fab fa-linkedin"></i></a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-5 col-lg-5 col-md-6 d-flex justify-content-center">
+
+                        <div class="footer-widget pl-30">
+
+                            <h2> Links</h2>
+
+                            <div class="footer-menu">
+
+                                <ul>
+
+                                    <li><a href="/">Home</a></li>
+
+                                    <li><a href="/about">Despre</a></li>
+
+                                    <li><a href="/servicii">Servicii</a></li>
+
+                                    <li><a href="/programare">Rezervări</a></li>
+
+                                    <li><a href="/contact">Contact</a></li>
+
+                                    <li><a href="/politica-confidentialitate">Politica de Confidențialitate</a></li>
+
+                                    <li><a href="/termeni-si-conditii">Termeni și Condiții</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+
+        </section>
+
+        <!-- Footer Top Area End -->
+
+
+
+        <section class="footer-bottom pt-25 pb-25 theme-bg">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-xl-12">
+
+                        <div class="copyright text-center">
+
+                            <h6>Copyright by@Example - 2024</h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </footer>
+
+    <!-- Footer Area End -->
+
+    <!-- JS here -->
+
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/one-page-nav-min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
+    <script src="{% static 'js/ajax-form.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

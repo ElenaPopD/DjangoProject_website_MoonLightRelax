@@ -1,0 +1,68 @@
+/*----------------------------------------*/
+/*  06. Features2
+/*----------------------------------------*/
+.features2-area{
+    background-position: center left;
+    background-size: cover;
+    @media #{$lg} {
+        background-position: center left;
+    }
+    @media #{$md} {
+        background-position: center left;
+    }
+    @media #{$sm} {
+        background-position: center left;
+    }
+    @media #{$mobile} {
+        background-position: center left;
+    }
+}
+.features2-content {
+    span {
+        margin-bottom: 25px;
+        display: block;
+        @media #{$md} {
+            margin-bottom: 15px;
+        }
+        @media #{$xs} {
+            margin-bottom: 15px;
+        }
+    }
+
+    h2 {
+        margin-bottom: 25px;
+        padding-right: 20px;
+        font-size: 46px;
+        font-family: $domine;
+        line-height: 60px;
+        @media #{$lg}{
+            padding-right: 0;
+            font-size: 40px;
+        }
+        @media #{$md}{
+            padding-right: 0;
+            font-size: 40px;
+        }
+        @media #{$xs}{
+            padding-right: 0;
+            font-size: 35px;
+            line-height: 46px;
+        }
+    }
+    p{
+        padding-right: 81px;
+        @media #{$laptop}{
+            padding-right: 0;
+        }
+        @media #{$sm}{
+            padding-right: 0px;
+        }
+        @media #{$mobile}{
+            padding-right: 0px;
+        }
+    }
+
+    a {
+        margin-top: 20px;
+    }
+}

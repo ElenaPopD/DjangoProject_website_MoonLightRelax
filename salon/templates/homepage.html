@@ -1,401 +1,432 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>MoonLight Relax</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script>
-function showModal(nume, descriere, pret, durata, categorie, promotion) {
-    // Construiește conținutul modalului
-    var modalContent = '<h3>' + nume + '</h3>';
-    modalContent += '<p>' + descriere + '</p>';
-    modalContent += '<p><b>Pret: ' + pret + ' lei</b></p>';
-    modalContent += '<p><b>Durata: ' + durata + '</b></p>'; // Presupunând că durata este un string formatat corespunzător
-    modalContent += '<p><b>Categorie: ' + categorie + '</b></p>';
-    modalContent += '<p><b>Promotie: ' + promotion + '</b></p>';
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="">
 
-    // Setează conținutul în corpul modalului
-    document.querySelector('#descriereModal .modal-body').innerHTML = modalContent;
+    <head>
 
-    // Afișează modalul
-    $('#descriereModal').modal('show');
-};
+        <meta charset="utf-8">
 
-function goToPage(page) {
-    window.location.href = page;
-}
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  </script>
-  <style>
-    body{
-      background-color: #f4f4f4;
-      overflow-x: scroll;
+        <title>MoonLight Relax</title>
 
-    }
-    .modal-body{
-      background-color: #f4f4f4;
+        <meta name="description" content="Îmbrățișează calmul și liniștea la Moonlight Relax. Descoperă beneficiile terapeutice ale masajului de relaxare și lasă-ne să te ghidăm către starea de bine și echilibru interior">
+        <meta name="keywords" content="masaj de relaxare, masaj terapeutic, relaxare, wellness, Cluj-Napoca, masaj clasic, masaj anticelulitic,  masaj de întreținere, masaj de recuperare">
 
-    }
-.contact-details{font-size: 18px;
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-}
-.carousel-indicators {
-    position: absolute;
-    bottom: 50px;
-}
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+
+        <!-- Place favicon.ico in the root directory -->
 
 
-    /* Stilizarea generală a formularului */
-    #formularRezervare {
-      margin-top: 60px;
-    margin-bottom: 60px;
-    display: flex;
-    flex-direction: column;
-}
-#formularRezervare {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
-#formularRezervare p {
-    margin-bottom: 15px;
-}
+		<!-- CSS here -->
 
-#formularRezervare label {
-  float: left;
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-/* Stilizarea input-urilor și a select-ului */
-#formularRezervare input[type="text"],
-#formularRezervare input[type="email"],
-#formularRezervare input[type="date"],
-#formularRezervare input[type="time"],
-#formularRezervare select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Asigură că padding-ul și border-ul sunt incluse în lățimea totală */
-}
-
-#formularRezervare textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical; /* Permite utilizatorului să redimensioneze textarea doar pe verticală */
-}
-    .red-text{
-      color: red;
-    }
-    .card{
-      width: auto !important;
-    }
-    .service{
-      border: 1px solid #ddd;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    .service-title{
-      font-size: 25px;
-      color: #fafafa;
-    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
-    }
-    .emboss-effect{
-    
-    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
-    }
-    .modal-header{
-      text-align: center;
-      background-color: #5cb85c;
-      color: white;
-    }
-    .modal-header .close {
-    margin-top: -30px;
-    }
-    
-    .service img {
-    width: -webkit-fill-available;
-    height: 200px; /* alege o înălțime care funcționează pentru tine */
-    object-fit: cover; /* asigură că imaginea acoperă spațiul disponibil fără a-și pierde proporțiile */
-}
-.carousel-img {
-  height: 500px; /* Ajustează această valoare conform nevoilor tale */
-  width: 100%;
-  object-fit: cover; /* Asigură că imaginea acoperă spațiul disponibil fără a-și pierde proporțiile */
-}
-.carousel-inner {
-  height: 500px;
-}
-
-.carousel-inner > .item > img {
-  height: 500px; /* Ajustează această valoare conform nevoilor tale */
-  object-fit: cover;
-}
-@media screen and (max-width: 500px) {
-  .carousel-inner > .item > img {
-  height: 400px; /* Ajustează această valoare conform nevoilor tale */
-  object-fit: contain;
-}
-.moonlight-slider{
-  padding: 0px !important;
-}
-.service-container{
-  padding: 0px !important;
-}
-.despre-descriere{
-  margin-right:0px !important;
-  margin-left:0px !important;
-  height: 80vh;
-    overflow: auto;
-}
-.despre-titlu {
-    left: 0px !important;
-    right: 0px !important
-}
-#formularRezervare{
-  max-width: 350px;
-}
-.contact-section{
-  word-wrap: break-word;
-  padding-bottom: 20px;
-}
-}
-
-.padding-btn{
-  padding: 10px;
-}
-#formularRezervare{
-  width: max-content;
-    text-align: right;
-    padding: 20px;
-}
-    .service-container {
-      justify-content: center;
-    text-align: center;
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 40px;
-    }
-
-    .card-body{
-      width: 350px;
-    }
-
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      padding-top: 20px;
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #2da518;
-      color: white;
-    }
-    .moonlight-relax-footer{
-      z-index: 5;
-      height:auto;
-      font-size: 12px;
-
-      position: fixed;
-    width: 100%;
-    bottom: 0;
-    }
-    .footer-green-text{
-      color: #1b610f;
-    }
-
-    .moonlight-slider{
-      padding: 50px;
-
-    }
-    .cursor-pointer{
-      cursor: pointer;
-    }
-
-    .ws-background-image{
-      position: absolute;
-     top:0;
-     bottom: 0;
-     left:0;
-      right: 0;
-      width: 100%;
-      height: 100vh;
-      object-fit: cover;
-      z-index: 1;
-    }
-
-    .despre-sectiune{
-      z-index: 2;
-    }
-    .despre-descriere{
-      margin-left: 100px;
-      margin-right: 100px;
-      position: absolute;
-      color: #fafafa;
-    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
-  font-size: 20px;
-  z-index: 3;
-  top: 100px;
- 
-    }
-
-    .despre-titlu{
-      left:50%;
-      right:50%;
-  position: absolute;
-  top: 30px;
-  color: #fafafa;
-    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
-  font-size: 30px;
-  text-align: center;
-  z-index: 3; /*the z-index property ensures that the text is displayed above the image. */
-}
-.carousel-control.left {
-    background-image: -webkit-linear-gradient(left, rgb(0 255 48 / 50%) 0, rgba(0, 0, 0, .0001) 100%);
-}
-.carousel-control.right {
-    background-image: -webkit-linear-gradient(right, rgb(0 255 48 / 50%) 0, rgba(0, 0, 0, .0001) 100%);
-}
-.home-page-content{
-  font-family: system-ui;
-    text-align: center;
-    color: #2ea518;
-}
-
-.navbar-inverse {
-    background-color: #2ea51899;
-    border-color: #2ea518;
-}
-
-.navbar-inverse .navbar-nav>li>a {
-    color: #1b610f;
-    font-weight: bolder;
-}
-
-.navbar-inverse .navbar-nav>li>a:hover {
-    color: #4ef830;
-    font-weight: bolder;
-}
-.errorlist{
-  margin-left: 10px;
-color:red
-}
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;} 
-    }
-  </style>
-</head>
-<body>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a onclick="goToPage('/')" class="navbar-brand" href="javascript:;"><img style="margin-top: -8px;" height="40px" src ="http://localhost:8000/media/services_images/logo_moonlight_relax_site.png"/></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li  onclick="goToPage('/')"><a href="javascript:;">Home</a></li>
-        <li><a href="javascript:;" onclick="goToPage('/about')">About</a></li>
-        <li onclick="goToPage('/servicii')"><a href="javascript:;">Servicii</a></li>
-        <li onclick="goToPage('/programare')"><a href="javascript:;">Rezervari</a></li>
-        <li onclick="goToPage('/contact')"><a href="javascript:;">Contact</a></li>
-      </ul>
-      
-    </div>
-  </div>
-</nav>
-  
-<div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-12 text-left">
-      {% block content %}
-        {% if is_homepage %}
-         <div class="home-page-content">
-          <h1><b>MoonLight Relax</b></h1>
-          <p><i>Bine ai venit pe pagina noastră unde găsești cele mai bune servicii de relaxare.</i></p>
-          <div>
-            <div id="myCarousel" class="carousel slide moonlight-slider" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
-              <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/material-design-iconic-font.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+        <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
         
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-              <div class="item active" onclick="goToPage('/servicii')">
-                <img class="carousel-img cursor-pointer"  src="http://localhost:8000/media/services_images/slide1.jpg" loading="lazy" alt="masaj" style="width:100%;">
-              </div>
-        
-              <div class="item" onclick="goToPage('/programare')">
-                <img class="cursor-pointer" src="http://localhost:8000/media/services_images/slide2.jpg" loading="lazy" alt="masaj" style="width:100%;">
-              </div>
-            
-              <div class="item" onclick="goToPage('/contact')">
-                <img class="cursor-pointer" src="http://localhost:8000/media/services_images/slide3.jpg" loading="lazy" alt="masaj" style="width:100%;">
-              </div>
+
+    </head>
+
+    <body>
+
+
+
+        <!-- Header Area Start -->
+
+        <header>
+
+            <div class="header-area black-bg">
+
+                <div class="container-fluid">
+
+                    <div class="row no-gutters">
+
+                        <div class="col-xl-3 col-lg-2 col-md-4">
+
+                            <div class="logo">
+
+                                <a href="/"><img  src="{% static 'img/logo_bun.png' %}" alt="MoonLight Relax Logo"></a>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xl-6 col-lg-10 col-md-8">
+
+                            <div class="main-menu">
+
+                                <nav id="mobile-menu">
+
+                                    <ul>
+
+                                        <li><a href="/">home</a></li>
+
+                                        <li><a href="/about">despre</a></li>
+
+                                        <li><a href="/servicii">Servicii</a></li>
+                                         <li><a href="/programare">Rezervări</a></li>
+
+                                        <li><a href="/contact">contact</a></li>
+
+                                    </ul>
+
+                                </nav>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xl-3 d-none d-xl-block">
+
+                            <div class="header-btn ">
+
+                                <a class="theme-btn" href="tel:+40751429527"><i class="fas fa-phone"></i>Telefon</a>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-12">
+
+                            <div class="mobile-menu"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-          </div>
+
+        </header>
+
+        <!-- Header Area End -->
+
+
+
+        <!-- Main Area Start -->
+
+        <main>
+
+            <!-- Slider Area Start -->
+
+            <section class="slider-area black-bg">
+
+                <div class="container-fluid">
+
+                    <div class="slider-active">
+
+                        <div class="single-slider text-center d-flex align-items-center justify-content-center" style="background-image: url('{{ STATIC_URL }}img/slider/slider-01.png');">
+
+                            <div class="container">
+
+                                <div class="slider-content">
+
+                                    <h6 data-animation="fadeInUp" data-delay=".2s">Bine ai venit!</h6>
+
+                                    <h1 data-animation="fadeInUp" data-delay=".4s">Descoperă oaza ta de relaxare! <br> </h1>
+
+                                    <div class="slider-btn">
+
+                                        <a class="btn theme-btn" href="/about" data-animation="fadeInUp" data-delay=".6s">Despre</a>
+
+                                        <a class="btn black-btn" href="/programare" data-animation="fadeInUp" data-delay=".8s">Vreau programare</a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="single-slider text-center d-flex align-items-center justify-content-center" style="background-image: url('{{ STATIC_URL }}img/slider/slider-02.jpg');">
+
+
+                            <div class="container">
+
+                                <div class="slider-content">
+
+                                    <h6 data-animation="fadeInUp" data-delay=".2s">CU BUCURIE</h6>
+
+                                    <h1 data-animation="fadeInUp" data-delay=".4s">Rezervă acum un loc la Moonlight Relax! <br> </h1>
+
+                                    <div class="slider-btn">
+
+                                        <a class="btn theme-btn" href="/about" data-animation="fadeInUp" data-delay=".6s">Despre</a>
+
+                                        <a class="btn black-btn" href="/programare" data-animation="fadeInUp" data-delay=".8s">Vreau programare</a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="single-slider text-center d-flex align-items-center justify-content-center" style="background-image: url('{{ STATIC_URL }}img/slider/slider-03.jpg');">
+
+
+                            <div class="container">
+
+                                <div class="slider-content">
+
+                                    <h6 data-animation="fadeInUp" data-delay=".2s">MoonLight Relax</h6>
+
+                                    <h1 data-animation="fadeInUp" data-delay=".4s">Explorează pagina <br>noastră</h1>
+
+                                    <div class="slider-btn">
+
+                                        <a class="btn theme-btn" href="/about" data-animation="fadeInUp" data-delay=".6s">Despre</a>
+
+                                        <a class="btn black-btn" href="/programare" data-animation="fadeInUp" data-delay=".8s">Vreau programare</a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="scroll d-none d-lg-block">
+
+                    <a class="smoth-scroll" href="#about">scroll</a>
+
+                </div>
+
+                <div class="header-social d-none d-lg-block">
+
+                    <ul>
+                        <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+
+                        <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+
+                        <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        
+
+                    </ul>
+
+                </div>
+
+            </section>
+
+            <!-- Slider Area End -->
+
+
+
+            <!-- About Area Start -->
+
+            <section id="about" class="about-area pt-120 pb-65">
+
+                <div class="container">
+
+                    <div class="about-border">
+
+                        <div class="row">
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 px-0">
+
+                                <div class="about-heading">
+
+                                    <span class="small-title">MASAJE DE LUX</span>
+
+                                    <h2>Revigorează-ți mintea, corpul și spiritul cu experiența unui masaj profesional.</h2>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+
+                                <div class="about-text">
+
+                                    <p>În spațiul nostru de refugiu, vei descoperi un mediu liniștit și 
+
+                                    reconfortant, unde fiecare detalii este gândit pentru confortul și relaxarea ta. 
+
+                                    Terapeuții noștri specializați îți vor oferi o experiență personalizată,
+
+                                    asigurându-se că părăsești sesiunea simțindu-te revigorat, reechilibrat și profund reînnoit.</p>
+
+                                    <a href="/programare" class="theme-btn">Fă o programare!</a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- About Area End -->
+
+        </main>
+
+        <!-- Main Area End -->
+
+
+
+        <!-- Footer Area Start -->
+
+        <footer>
+
+            <!-- Footer Top Area Start -->
+
+            <section class="footer-area black-bg pt-115 pb-120">
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+
+                            <div class="footer-widget">
+
+                                <div class="footer-logo">
+
+                                    <img src="{% static 'img/logo.png' %}" alt="logo">
+
+                                </div>
+
+                                <p>Nu uita că relaxarea este o artă. Oferă-ți o pauză de liniște. 
+                                    Vino la un masaj și redescoperă armonia interioară.</p>
+
+                                <div class="footer-social-link">
+
+                                    <ul>
+
+                                        <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+
+                                        <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+    
+                                        <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xl-5 col-lg-5 col-md-6 d-flex justify-content-center">
+
+                            <div class="footer-widget pl-30">
+
+                                <h2>Links</h2>
+
+                                <div class="footer-menu">
+
+                                    <ul>
+
+                                        <li><a href="/">Home</a></li>
+
+                                        <li><a href="/about">Despre</a></li>
+    
+                                        <li><a href="/servicii">Servicii</a></li>
+    
+                                        <li><a href="/programare">Rezervări</a></li>
+    
+                                        <li><a href="/contact">Contact</a></li>
+
+                                        <li><a href="/politica-confidentialitate">Politica de Confidențialitate</a></li>
+
+                                        <li><a href="/termeni-si-conditii">Termeni și Condiții</a></li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Footer Top Area End -->
+
+
+
+            <section class="footer-bottom pt-25 pb-25 theme-bg">
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-xl-12">
+
+                            <div class="copyright text-center">
+
+                                <h6>Copyright by@MoonLightRelax - 2024</h6>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </footer>
+
+        <!-- Footer Area End -->
+
+
+
+
+
+
+
+
+
+		<!-- JS here -->
+
+        <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/one-page-nav-min.js' %}"></script>
+        <script src="{% static 'js/slick.min.js' %}"></script>
+        <script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
+        <script src="{% static 'js/ajax-form.js' %}"></script>
+        <script src="{% static 'js/wow.min.js' %}"></script>
+        <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
         
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-        {% else %}
-          <!--  The space between the "BEGIN" and "END" tags will be populated by other templates that extend the "base.html" template.base.html -->
-        {% endif %}
-      {% endblock %}
-    </div>
-  </div>
-</div>
 
-<footer class="container-fluid text-center moonlight-relax-footer">
-  <b> <span class="footer-green-text">Copyright © 2024 - MoonLight Relax</span></b>
-</footer>
+    </body>
 
-</body>
 </html>

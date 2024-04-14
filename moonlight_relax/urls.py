@@ -31,6 +31,8 @@ urlpatterns = [
     path('programare/', views.programare, name='programare'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+    path('politica-confidentialitate/', views.politica_confidentialitate, name='politica_confidentialitate'),
+    path('termeni-si-conditii/', views.termeni_si_conditii, name='termeni_si_conditii'),
 
 
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
