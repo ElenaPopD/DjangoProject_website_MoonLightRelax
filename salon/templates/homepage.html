@@ -75,7 +75,7 @@
                                         <li><a href="/about">despre</a></li>
 
                                         <li><a href="/servicii">Servicii</a></li>
-                                         <li><a href="/programare">Rezervări</a></li>
+                                        <li><a href="/programare">Rezervări</a></li>
 
                                         <li><a href="/contact">contact</a></li>
 
@@ -399,14 +399,6 @@
 
         <!-- Footer Area End -->
 
-
-
-
-
-
-
-
-
 		<!-- JS here -->
 
         <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
@@ -425,6 +417,19 @@
         <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
         <script src="{% static 'js/plugins.js' %}"></script>
         <script src="{% static 'js/main.js' %}"></script>
+        <script> 
+            $(document).ready(function(){
+                $('.slider-active').slick({
+                    dots: true,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 1,
+                    adaptiveHeight: true
+                });
+            });
+
+
+        </script>
         
 
     </body>

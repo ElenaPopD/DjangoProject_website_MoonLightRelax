@@ -2698,7 +2698,7 @@ label {
 
   content: '';
 
-  background: url("../img/pink-border-shape.png") center center/cover;
+  background: url("../img/border-shape.png") center center/cover;
 
   width: 82px;
 
@@ -8598,7 +8598,7 @@ ul.cat li a:hover {
 
 .appointment-area.hp-1 {
 
-  background: url("../img/appointment-bg-01.png") center center/cover; }
+  background: url("../img/subscribe-bg.png") center center/cover; }
 
 .appointment-area.style-3 {
 
