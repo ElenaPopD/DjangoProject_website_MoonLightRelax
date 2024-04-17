@@ -36,6 +36,9 @@ CSRF_COOKIE_SECURE = True
 
 SESSION_COOKIE_SECURE = True
 
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
+
+
 # Application definition
 
 INSTALLED_APPS = ['salon',
