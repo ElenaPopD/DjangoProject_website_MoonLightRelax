@@ -1,4 +1,4 @@
-Django==5.0.9
+Django==5.0.10
 django-extensions==3.2.3
 pygraphviz==1.12
 django-debug-toolbar==4.2.0
